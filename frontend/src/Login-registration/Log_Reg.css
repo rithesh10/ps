@@ -1,0 +1,473 @@
+body {
+  margin: 0;
+  background-color: rgb(243, 247, 251);
+  font-family: "Pacifico", cursive;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.body {
+  /*  this css also present in App.css  */
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 19% 1fr 1fr;
+  grid-template-rows: 10% 1fr 1fr 1fr;
+}
+
+/*      Buttons.jsx CSS    */
+
+.lgn-btns {
+  display: flex;
+  justify-content: space-around;
+  padding: 0px;
+  justify-content: center;
+  width: fit-content;
+  margin: 0px auto;
+  text-align: center;
+}
+
+.lgn-btns a {
+  color: white;
+  background-color: black;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 10px 2px;
+  width: fit-content;
+}
+
+.lgn-btns a:active {
+  color: white;
+  background-color: rgb(93, 93, 93);
+}
+
+/*     Nav.jsx CSS      */
+
+.lgn-nav {
+  display: flex;
+  height: fit-content;
+  background-color: black;
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.lgn-nav a {
+  text-decoration: none;
+  color: white;
+}
+
+.manas {
+  font-family: "Pacifico", cursive;
+  font-size: 30px;
+  margin: 15px 20px;
+  /* margin: auto 20px; */
+  cursor: pointer;
+}
+
+.nav-item {
+  display: flex;
+  list-style: none;
+  margin: auto;
+  padding: 0;
+}
+
+.nav-item a li {
+  padding: 8px 25px;
+  margin: auto 5px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.nav-item a li:hover {
+  background-color: rgb(216, 216, 216);
+  color: black;
+}
+
+.nav-item a li:active {
+  background-color: rgb(188, 187, 187);
+  color: black;
+}
+
+.menu {
+  display: none;
+  cursor: pointer;
+  margin: auto 10px;
+  list-style: none;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: fit-content;
+}
+
+.menu-item a li {
+  padding: 10px 10px 8px 10px;
+}
+
+.menu-item a li:hover {
+  background-color: rgb(223, 222, 222);
+}
+
+/*    Bodys.jsx CSS     */
+
+.body-top {
+  display: flex;
+  margin-top: 70px;
+  flex-wrap: wrap;
+  flex-direction: row;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.bodyleft {
+  background-image: url("https://media.istockphoto.com/id/1294477039/vector/metaphor-bipolar-disorder-mind-mental-double-face-split-personality-concept-mood-disorder-2.jpg?s=612x612&w=0&k=20&c=JtBxyFapXIA63hzZk_F5WNDF92J8fD2gIFNX3Ta4U3A=");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: 668px;
+}
+
+.bodyleft h1 {
+  font-size: 70px;
+  margin: 80px 0px 0px 30px;
+}
+
+.bodyleft p {
+  font-size: 20px;
+  width: 700px;
+  color: black;
+  margin: 20px 0px 0px 30px;
+}
+
+.bodyright {
+  background-color: rgb(233 227 216);
+  height: 668px;
+  width: 40%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.bodyright h1 {
+  display: none;
+  font-size: 60px;
+  margin: 0;
+}
+
+
+.bodyright p{
+  width: 80%;
+  margin: 0px auto 20px auto;
+}
+
+/*     Login.jsx CSS     */
+
+.Lgn-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  animation: login 0.5s forwards;
+}
+
+@keyframes login {
+  0% {
+    bottom: -100%;
+  }
+  100% {
+    bottom: 60%;
+  }
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
+  width: 350px;
+  margin: 50px 0 30px 0;
+  padding: 20px;
+  background-color: rgb(242, 242, 242);
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.login-box h2 {
+  /* font-family: "Pacifico", cursive; */
+  font-size: 30px;
+  margin: 10px 0px 0px 0px;
+}
+
+.login-box label {
+  font-weight: 800;
+  margin: 15px 0px 9px 20px;
+  align-self: flex-start;
+  font-weight: 600;
+}
+
+.login-box input {
+  width: 300px;
+  height: 25px;
+  padding: 7px 10px 7px 10px;
+  border-radius: 5px;
+  border: 2px solid gray;
+  align-self: center;
+  font-size: 15px;
+}
+
+.forget {
+  cursor: pointer;
+  font-size: 15px;
+  margin: 20px;
+  color: black;
+}
+.forget:hover {
+  color: rgb(127, 152, 144);
+}
+.forget:active {
+  color: black;
+}
+
+.lg-btn {
+  text-decoration: none;
+  align-self: center;
+  margin: 0px 0px 20px 0px;
+  width: 300px;
+  height: 35px;
+  border-radius: 5px;
+  background-color: #11af22;
+  border: 2px solid #11af22;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0px;
+}
+
+.lg-btn:hover {
+  background-color: #039903;
+}
+
+.lg-btn:active {
+  background-color: #11af22;
+}
+
+.login-box p {
+  margin: 0px 10px 10px 10px;
+  height: fit-content;
+}
+
+.su-anc {
+  color: rgb(65, 171, 213);
+  cursor: pointer;
+}
+
+.su-anc:hover {
+  color: rgb(0, 108, 151);
+}
+
+.su-anc:active {
+  color: rgb(65, 171, 213);
+}
+
+/*    Signup.jsx CSS     */
+
+.body {
+  /* display: flex; */
+  justify-content: center;
+}
+
+.signupbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  width: 350px;
+  margin: 50px;
+  padding: 20px;
+  background-color: rgb(242, 242, 242);
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.signupbox h2 {
+  /* font-family: "Pacifico", cursive; */
+  font-size: 30px;
+  margin: 15px auto 15px auto;
+  padding: 20px auto 0px auto;
+}
+
+.signupint {
+  width: 300px;
+  height: 25px;
+  margin: 10px auto 0px auto;
+  padding: 7px 10px 7px 10px;
+  border-radius: 5px;
+  border: 2px solid gray;
+  align-self: center;
+  font-size: 15px;
+}
+
+.signupint > .inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.signupbox p {
+  height: fit-content;
+  /* margin: 15px; */
+  margin: 5px auto;
+}
+
+.endbtns {
+  display: flex;
+  width: 342px;
+  margin: auto;
+  margin-top: 15px; /* */
+  padding: 5px auto 5px auto;
+}
+.endbtns button {
+  padding: 0px;
+  height: 40px;
+  text-decoration: none;
+  margin: 10px;
+  width: 300px;
+  height: 35px;
+  border-radius: 5px;
+  background-color: #11af22;
+  border: 2px solid #11af22;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0px;
+}
+.endbtns button:hover {
+  background-color: #039903;
+}
+
+.error {
+  display: block;
+  padding: 0;
+  color: red;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/*    MEDIA QUERIES    */
+
+/* For smaller screens (phones) */
+@media only screen and (max-width: 750px) {
+  /* Your CSS styles here */
+  .manas {
+    font-size: 25px;
+  }
+
+  .nav-item {
+    display: none;
+  }
+  .bodyleft {
+    display: none;
+  }
+  .bodyright {
+    background-image: url("https://media.istockphoto.com/id/1294477039/vector/metaphor-bipolar-disorder-mind-mental-double-face-split-personality-concept-mood-disorder-2.jpg?s=612x612&w=0&k=20&c=JtBxyFapXIA63hzZk_F5WNDF92J8fD2gIFNX3Ta4U3A=");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 668px;
+  }
+  .bodyright p {
+    margin: 0px 100px;
+  }
+  .bodyright h1 {
+    display: flex;
+  }
+  .lgn-btns {
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+  }
+  .menu {
+    display: flex;
+  }
+
+  /* login.jsx */
+
+  .login-box {
+    width: 300px;
+  }
+  .login-box h2 {
+    font-size: 25px;
+  }
+  .login-box input {
+    width: 250px;
+    height: 20px;
+  }
+  .lg-btn {
+    width: 250px;
+    height: 30px;
+  }
+
+  /* signup,jsx */
+
+  .signupbox {
+    width: 300px;
+  }
+  .signupbox h2 {
+    font-size: 25px;
+  }
+  .signupint {
+    width: 250px;
+    height: 20px;
+  }
+
+  .endbtns {
+    width: 290px;
+  }
+}
+
+/* For tablets */
+@media only screen and (min-width: 750px) and (max-width: 1024px) {
+  /* Your CSS styles here */
+}
+
+/* For larger screens (desktops) */
+@media only screen and (min-width: 1025px) {
+  /* Your CSS styles here */
+}
