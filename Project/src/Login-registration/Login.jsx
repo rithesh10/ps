@@ -21,7 +21,7 @@ const Login = ({ name }) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/users/student-login",
+        "http://localhost:2000/api/users/student-login",
         data,
         {
           headers: {

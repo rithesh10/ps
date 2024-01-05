@@ -36,7 +36,7 @@ const Navbar = () => {
           return;
         }
         const response = await axios.get(
-          "http://localhost:3000/api/users/student-profile",
+          "http://localhost:2000/api/users/student-profile",
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,
