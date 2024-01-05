@@ -3,6 +3,37 @@ const bcrypt = require("bcryptjs");
 const asyncHandler = require("express-async-handler");
 const User = require("../model/userModel");
 
+const nameV = (name) => {
+  return !(
+    /\d/.test(name) || /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(name)
+  );
+};
+
+const numV = (phoneno) => {
+  return !(
+    /[a-zA-Z]/.test(phoneno) ||
+    /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(phoneno) ||
+    phoneno.length !== 10
+  );
+};
+
+const emailV = (email) => {
+  return email.slice(-10) === "@gmail.com";
+};
+
+const userV = (rollno) => {
+  return !/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(rollno);
+};
+
+const passV = (password) => {
+  return (
+    password.length >= 8 &&
+    /[a-z]/.test(password) &&
+    /[A-Z]/.test(password) &&
+    /\d/.test(password) &&
+    /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(password)
+  );
+};
 const registerUser = asyncHandler(async (req, res) => {
   const { name, section, password, rollno, phoneno, email } = req.body;
 
@@ -10,38 +41,6 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Please add all fields");
   }
-
-  const nameV = (name) => {
-    return !(
-      /\d/.test(name) || /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(name)
-    );
-  };
-
-  const numV = (phoneno) => {
-    return !(
-      /[a-zA-Z]/.test(phoneno) ||
-      /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(phoneno) ||
-      phoneno.length !== 10
-    );
-  };
-
-  const emailV = (email) => {
-    return email.slice(-10) === "@gmail.com";
-  };
-
-  const userV = (rollno) => {
-    return !/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(rollno);
-  };
-
-  const passV = (password) => {
-    return (
-      password.length >= 8 &&
-      /[a-z]/.test(password) &&
-      /[A-Z]/.test(password) &&
-      /\d/.test(password) &&
-      /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(password)
-    );
-  };
 
   const userExists = await User.findOne({ rollno });
   if (userExists) {
@@ -174,16 +173,15 @@ const getMe = asyncHandler(async (req, res) => {
 });
 
 const changePassword = asyncHandler(async (req, res) => {
-  const { rollno, password, changepassword } = req.body;
+  const { rollno, password, newpassword, confirmpassword } = req.body;
   const user = await User.findOne({ rollno });
 
-  if (user && (await bcrypt.compare(password, user.password))) {
+  if (await bcrypt.compare(password, user.password)) {
     const salt = await bcrypt.genSalt(10);
-    const hashedNewPassword = await bcrypt.hash(changepassword, salt);
+    const hashedNewPassword = await bcrypt.hash(newpassword, salt);
 
     // Update the user's password with the newly hashed password
-
-    if (!passV(changePassword)) {//   changed   //
+    if (passV(newpassword)) {
       user.password = hashedNewPassword;
       await user.save();
 
@@ -202,11 +200,12 @@ const changePassword = asyncHandler(async (req, res) => {
         message: "Password changed successfully",
         token: newToken,
       });
-    }else{ //   changed   //
-      res.status(400).json({ error : "Invalid new password"});
+    } else {
+      res.status(400).json({ error: "Invalid new password" });
     }
   } else {
-    res.status(400).json({ error: "Invalid credentials" });
+    console.log("invalid current password");
+    res.status(400).json({ error: "Invalid current password" });
   }
 });
 
