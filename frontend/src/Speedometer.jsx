@@ -182,14 +182,14 @@ const Speedometer = ({ prompt }) => {
   };
 
   const getLegendColor = (value) => {
-<<<<<<< HEAD
+// <<<<<<< HEAD
     if (value <= 1) {
       return { color: 'red', label: 'Critical' };
     } else if (value < 4 && value > 1) {
       return { color: 'orange', label: 'Challenging' };
     } else {
       return { color: 'green', label: 'Normal' };
-=======
+// =======
     if (value <= 3) {
       return { color: 'green', label: 'Normal' };
     } else if (value < 7) {
