@@ -131,6 +131,11 @@
 // };
 
 // export default Speedometer;
+
+
+
+
+
 import React, { useState, useEffect } from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
