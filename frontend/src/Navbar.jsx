@@ -44,8 +44,6 @@ const Navbar = () => {
             },
           }
         );
-        // console.log("res===", response);
-
         if (response && response.data) {
           p = response.data;
           setuserdata({
@@ -57,9 +55,6 @@ const Navbar = () => {
             password: response.data.password,
           });
           console.log(response.data);
-          // console.log("v==", v);
-          // console.log("p==", p);
-          // console.log("p==", p.name);
         }
       } catch (error) {
         console.log(error);

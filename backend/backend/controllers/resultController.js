@@ -45,4 +45,10 @@ const resultData = asyncHandler(async (req,res)=>{
   
 })
 
-module.exports={resultData}
+const allResult = async (req,res)=>{
+  const result = await Result.find({})
+  res.status(200).json(result)
+
+}
+
+module.exports={resultData,allResult}
