@@ -136,7 +136,11 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 const Speedometer = ({ prompt }) => {
+<<<<<<< HEAD
+  const maxScore = 4;
+=======
   const maxScore = 10;
+>>>>>>> dea0cc841a9c7ba1c230d38d70007ded7ff9564b
   const minScore = 0;
 
   const [currentScore, setCurrentScore] = useState(0);
@@ -169,17 +173,30 @@ const Speedometer = ({ prompt }) => {
 
   const calculateColor = (value) => {
     const normalizedValue = (value - minScore) / (maxScore - minScore);
+<<<<<<< HEAD
+    const hue = normalizedValue * 120; // Start from red (hue 0) and end at green (hue 120)
+=======
     const hue = 120 - normalizedValue * 120; // Inverted to start from green (hue 120) and end at red (hue 0)
+>>>>>>> dea0cc841a9c7ba1c230d38d70007ded7ff9564b
     return `hsl(${hue}, 100%, 50%)`;
   };
 
   const getLegendColor = (value) => {
+<<<<<<< HEAD
+    if (value <= 1) {
+      return { color: 'red', label: 'Critical' };
+    } else if (value < 4 && value > 1) {
+      return { color: 'orange', label: 'Challenging' };
+    } else {
+      return { color: 'green', label: 'Normal' };
+=======
     if (value <= 3) {
       return { color: 'green', label: 'Normal' };
     } else if (value < 7) {
       return { color: 'orange', label: 'Challenging' };
     } else {
       return { color: 'red', label: 'Critical' };
+>>>>>>> dea0cc841a9c7ba1c230d38d70007ded7ff9564b
     }
   };
 
@@ -222,7 +239,11 @@ const Speedometer = ({ prompt }) => {
                 height: '20px',
                 backgroundColor: legendColor.color,
                 marginRight: '5px',
+<<<<<<< HEAD
+                borderRadius: '10px',
+=======
                 borderRadius:'10px'
+>>>>>>> dea0cc841a9c7ba1c230d38d70007ded7ff9564b
               }}
             />
             <div>{legendColor.label}</div>
