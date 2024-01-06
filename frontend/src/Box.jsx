@@ -2,9 +2,9 @@ import React from 'react';
 import Speedometer from './Speedometer';
 
 const Box = () => {
-  const depressionValue = 10;
-  const stressValue = 9;
-  const anxietyValue = 3;
+  const depressionValue = 1;
+  const stressValue = 2;
+  const anxietyValue =4;
   const overall=(depressionValue+stressValue+anxietyValue)/3;
 
   return (
@@ -12,19 +12,19 @@ const Box = () => {
       <div className="Box">
         <div className="depression dabba">
           <div><Speedometer prompt={depressionValue} /></div>
-          <div>Depression</div>
+          <div className='type-name'>Depression</div>
         </div>
         <div className="stress dabba">
           <div><Speedometer prompt={stressValue} /></div>
-          <div>Stress</div>
+          <div className='type-name'>Stress</div>
         </div>
         <div className="anxiety dabba">
           <div><Speedometer prompt={anxietyValue} /></div>
-          <div>Anxiety</div>
+          <div className='type-name'>Anxiety</div>
         </div>
         <div className="overall dabba">
           <div><Speedometer prompt={overall} /></div>
-          <div>overall</div>
+          <div className='type-name'>overall</div>
         </div>
       </div>
     </>
