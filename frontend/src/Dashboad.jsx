@@ -5,6 +5,7 @@ import Navbar from './Navbar'
 import Results_graph from './Results_graph'
 import Activity from './Activity'
 import Footer from './Footer'
+import Box from './Box'
 
 const Dashboad = () => {
   return (
@@ -13,7 +14,8 @@ const Dashboad = () => {
       <Navbar/>
       <Results_graph/>
       <Activity/>
-      <Footer/>
+      <Box/>
+      {/* <Footer/> */}
     </>
   )
 }
