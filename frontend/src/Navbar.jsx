@@ -7,6 +7,9 @@ import { CiLogout } from "react-icons/ci";
 import axios from "axios";
 import { IoIosArrowForward } from "react-icons/io";
 import Changepassword from "./Changepassword";
+import Sidebar from "./Sidebar";
+import Counceller from "./Counceller";
+import Contactmodal from "./Contactmodal";
 
 const Navbar = () => {
   const [det_visible, setdet_Visible] = useState(false);
@@ -80,12 +83,18 @@ const Navbar = () => {
     setdet_Visible(false);
   };
 
+  const openmenu = () => {
+    setmenu_Visible(!menu_visible);
+  };
+
+  const [contact_visible, setcontact_visible] = useState(false);
+  const [counsellor_visible, setcounsellor_visible] = useState(false);
 
   return (
     // Navbar
     <nav className="Navbar">
       <div className="left-menu">
-        <li onClick={() => setmenu_Visible(true)}>
+        <li onClick={openmenu}>
           <GiHamburgerMenu style={{ fontSize: "30px" }} />
         </li>
         <div className="Nav-left">
@@ -98,7 +107,7 @@ const Navbar = () => {
 
       {/* Menu Modal */}
 
-      <Modal
+      <Modal //// MENU ////
         isOpen={menu_visible}
         onRequestClose={() => setmenu_Visible(false)}
         style={{
@@ -116,18 +125,60 @@ const Navbar = () => {
           <h1>Manas Health</h1>
           <h2>General</h2>
           <ul>
-            <li>
-              <Link to="/dashboard">Home</Link>
-            </li>
-            <li>
-              <Link to="/dashboard/calendar">Calendar</Link>
-            </li>
-            <li>Counsellor</li>
+            <Link to="/dashboard">
+              <li>Home</li>
+            </Link>
+            <Link to="/dashboard/calendar">
+              <li>Calendar</li>
+            </Link>
+            <li onClick={() => setcounsellor_visible(true)}>Counsellor</li>
+            <Modal
+              isOpen={counsellor_visible}
+              onRequestClose={() => setcounsellor_visible(false)}
+              style={{
+                content: {
+                  width: "fit-content",
+                  height: "fit-content",
+                  overflow: "hidden",
+                  top: "50%",
+                  left: "50%",
+                  transform: " translate(-50%, -50%)",
+                  padding: "0",
+                  margin: "0",
+                  backgroundColor: "none",
+                  borderRadius: "20px",
+                },
+              }}
+            >
+              <Counceller />
+            </Modal>
             <li>Education</li>
           </ul>
           <h2>Tools</h2>
           <ul>
-            <li>Contact us</li>
+            <li onClick={() => setcontact_visible(!contact_visible)}>
+              Contact us
+            </li>
+            <Modal
+              isOpen={contact_visible}
+              onRequestClose={() => setcontact_visible(false)}
+              style={{
+                content: {
+                  width: "fit-content",
+                  height: "fit-content",
+                  overflow: "hidden",
+                  top: "50%",
+                  left: "50%",
+                  transform: " translate(-50%, -50%)",
+                  padding: "0",
+                  margin: "0",
+                  backgroundColor: "none",
+                  borderRadius: "20px",
+                },
+              }}
+            >
+              <Contactmodal />
+            </Modal>
             <li>
               <Link to="/">
                 <CiLogout
@@ -179,7 +230,7 @@ const Navbar = () => {
           </div>
         }
       </Modal>
-      
+
       {/* Change Password */}
 
       <Modal
@@ -200,10 +251,10 @@ const Navbar = () => {
         }}
       >
         <div className="modal-changepass">
-          <Changepassword 
-          isVisible={showChangePassword}
-          closemodal={openChangePassword}
-          roll={userdata.rollno}
+          <Changepassword
+            isVisible={showChangePassword}
+            closemodal={openChangePassword}
+            roll={userdata.rollno}
           />
         </div>
       </Modal>
