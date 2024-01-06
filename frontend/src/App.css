@@ -780,6 +780,8 @@ button:hover {
 
 
 
+
+
 @keyframes slideInFromDown {
   0% {
     top: -100%;
@@ -790,7 +792,45 @@ button:hover {
 }
 
 
+/* Box.jsx */
 
+
+.Box{
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 2;
+  grid-column-end: 5;
+  margin: auto;
+  display: flex;
+  height: fit-content;
+  width: fit-content;
+  flex-direction: row;
+}
+.depression,
+.stress,
+.anxiety,
+  .overall{
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  margin: 10px;
+  border-radius: 10px;
+  border: 2px solid black;
+  background-color: rgb(245, 249, 252);
+  /* color: */
+  padding: 10px;
+  
+}
+
+.dabba{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin: 20px;
+  font-size: 20px;
+}
 
 
 
@@ -827,14 +867,14 @@ button:hover {
   .Nav-left h1 {
     font-size: 35px;
   }
+  .Nav-right h3{
+    display: none;
+  }
   .modal-side {
     width: 100px;
   }
   .modal-side h1 {
     font-size: 20px;
-  }
-  .Nav-right h3{
-    display: none;
   }
 
   .modal-side h2 {
