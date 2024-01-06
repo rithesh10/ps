@@ -2,8 +2,8 @@ import React from 'react';
 import Speedometer from './Speedometer';
 
 const Box = () => {
-  const depressionValue = 10;
-  const stressValue = 9;
+  const depressionValue = 1;
+  const stressValue = 4;
   const anxietyValue = 3;
   const overall=(depressionValue+stressValue+anxietyValue)/3;
 
