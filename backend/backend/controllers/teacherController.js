@@ -21,7 +21,7 @@ const teacherlogin = asyncHandler( async (req,res)=>{
 })
 
 const studentData = async (req,res)=>{
-    const user = await User.find({}).limit(3)
+    const user = await User.find({})
     res.status(200).json(user)
 
 }

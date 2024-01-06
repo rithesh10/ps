@@ -3,8 +3,8 @@ import Speedometer from './Speedometer';
 
 const Box = () => {
   const depressionValue = 1;
-  const stressValue = 2;
-  const anxietyValue =4;
+  const stressValue = 4;
+  const anxietyValue = 3;
   const overall=(depressionValue+stressValue+anxietyValue)/3;
 
   return (
