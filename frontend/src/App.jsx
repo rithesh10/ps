@@ -23,6 +23,7 @@ import Box from "./Box.jsx"
 
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Results from "./Results.jsx";
 
 const App = () => {
   return (
@@ -37,6 +38,7 @@ const App = () => {
         <Route path="/dashboard" element={<Dashboad />} />
         <Route path="/dashboard/calendar" element={<GoogleCalendar />} />
         <Route path="/Pasword-reset" element={<Forgetpassword />} />
+        <Route path="/dashboard/assessment/result" element={<Results/>} />
       </Routes>
       {/* <Box/> */}
     </div>

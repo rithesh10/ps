@@ -396,7 +396,7 @@ a {
   margin: 50px auto 0px 20px;
   /* margin: 20px auto 10px 20px; */
   border-radius: 27px;
-  background-image: url("https://datavizcatalogue.com/methods/images/top_images/area_graph.png");
+  /* background-image: url("https://datavizcatalogue.com/methods/images/top_images/area_graph.png"); */
   background-repeat: no-repeat;
   background-size: cover;
   grid-column-start: 2;
@@ -404,7 +404,19 @@ a {
   grid-row-start: 2;
   grid-row-end: 3;
 }
+.graph{
+  display: flex;
+  flex-wrap: wrap;
+  /* padding: 10px;   */
+}
+#lineChart{
+margin: 10px;
+margin-right: 30px;
+border: 1px solid black;
+padding: 20px;
+border-radius: 10px;
 
+}
 /* Activity.jsx CSS */
 
 .Activity {

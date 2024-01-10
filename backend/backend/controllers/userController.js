@@ -225,10 +225,35 @@ const getUsers = asyncHandler(async (req, res) => {
   res.status(200).json(users);
 });
 
+const forgotpassword = async(req,res)=>{
+  const {email}=req.body;
+  try {
+    const user=await User.findOne({email});
+    if(!user)
+    {
+      return res.status(400).json("User not found. Email doesnot exist in database");
+    }
+    const token=generateToken(
+      user._id,
+      user.name,
+      user.section,
+      user.phoneno,
+      user.rollno,
+      user.password,
+      user.email
+    )
+    res.status(200).json(token)
+    const link=`http://localhost:2000/api/users/reset-password/${user._id}/${token}`
+  } catch (error) {
+    res.status(400).json(error)
+  }
+}
+
 module.exports = {
   registerUser,
   loginUser,
   getMe,
   getUsers,
   changePassword,
+  forgotpassword
 };
