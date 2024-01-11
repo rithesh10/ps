@@ -19,7 +19,7 @@ a {
 /* Sidebar.jsx CSS */
 
 .Sidebar {
-  background-color: rgb(227, 238, 248);
+  background-color: rgb(245, 246, 247);
   padding: 3vh 10px;
   height: 94vh;
   grid-column-start: 1;
@@ -37,7 +37,7 @@ a {
   border-radius: 20px;
   font-weight: 500;
   font-size: 29px;
-  background-color: rgb(207, 226, 243);
+  background-color: #3ca5ce;
   text-align: center;
 }
 
@@ -65,7 +65,7 @@ a {
 }
 
 .Sidebar li:hover {
-  background-color: rgb(210, 223, 238);
+  background-color: #3ca5ce;
 }
 
 /* Navbar.jsx CSS */
@@ -96,7 +96,7 @@ a {
   padding: 8px 20px;
   border-radius: 20px;
   font-weight: 500;
-  background-color: rgb(207, 226, 243);
+  background-color: #3ca5ce;
 }
 
 .modal-side h2 {
@@ -123,11 +123,11 @@ a {
 }
 
 .modal-side li:hover {
-  background-color: rgb(210, 223, 238);
+  background-color: #d6dcdf
 }
 
 .Navbar {
-  background-color: rgb(207, 226, 243);
+  background-color: 	#3ca5ce;
   height: fit-content;
   margin: 0;
   display: flex;
@@ -195,20 +195,25 @@ a {
 }
 
 .stu-details {
-  background-color: #e1edf7;
-  font-size: 17px;
+  background-color: #eaf2f8;
+  font-size: 1.7rem;
   display: flex;
+  margin: 0;
   flex-direction: column;
   align-content: center;
-  position: fixed;
+  /* position: fixed; */
   padding: 20px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 10px;
-  top: 10px;
-  right: 5px;
+  /* top: 10px;
+  right: 5px; */
   animation: details 0.5s forwards ease-in-out;
 }
-
+.change-password{
+  width:20vw;
+  height: 6vh;
+  font-size: 1.1rem;
+}
 @keyframes details {
   0%{
     right: 5%;
@@ -391,13 +396,14 @@ a {
 .Results_graph {
   /* height: 50vh; */
   width: 50vw;
-  border: 10px solid rgb(231, 239, 246);
+  /* border: 10px solid rgb(136, 138, 139); */
   padding: 10px;
   margin: 50px auto 0px 20px;
   /* margin: 20px auto 10px 20px; */
   border-radius: 27px;
   /* background-image: url("https://datavizcatalogue.com/methods/images/top_images/area_graph.png"); */
   background-repeat: no-repeat;
+  background-color: rgb(252, 251, 251);
   background-size: cover;
   grid-column-start: 2;
   grid-column-end: 3;
@@ -412,7 +418,7 @@ a {
 #lineChart{
 margin: 10px;
 margin-right: 30px;
-border: 1px solid black;
+/* border: 1px solid black; */
 padding: 20px;
 border-radius: 10px;
 
@@ -420,7 +426,7 @@ border-radius: 10px;
 /* Activity.jsx CSS */
 
 .Activity {
-  background-color: blanchedalmond;
+  background-color: rgb(252, 180, 73);
   grid-column-start: 3;
   grid-column-end: 4;
   grid-row-start: 2;
@@ -457,11 +463,32 @@ border-radius: 10px;
   }
 }
 
-.Activity-img {
+.Activity-quiz {
   height: 80px;
   width: 80px;
+  background-image: url("./quiz.png");
   border-radius: 20px;
   margin: auto;
+  background-repeat: no-repeat;
+background-size: contain;}
+.Activity-yoga {
+  height: 80px;
+  width: 80px;
+  background-image: url("./yoga.png");
+  border-radius: 20px;
+  margin: auto;
+  background-repeat: no-repeat;
+background-size: contain;
+}
+.Activity-meditation {
+  height: 80px;
+  width: 80px;
+  background-image: url("./meditation.png");
+  border-radius: 20px;
+  margin: auto;
+  background-repeat: no-repeat;
+background-size: contain;
+background-color: white;
 }
 
 .Activity-item {
@@ -576,6 +603,41 @@ border-radius: 10px;
   border: 1px solid black;
   padding: 4px;
   border-radius: 4px;
+}
+/* ResultsHistory */
+.BodyBox {
+  grid-row-start: 2;
+  grid-row-end: 4;
+  grid-column-start: 2;
+  grid-column-end: 4; /* Update these values for the right half */
+  display: flex;
+  justify-content: right; /* This property doesn't exist, use justify-content: flex-end; */
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-image: url("./nurse.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #f8f9fa; /* Light gray background */
+}
+
+.mainBox {
+  height: fit-content;
+  width: 40vw;
+  border: 2px solid #000; /* Black border */
+  margin: 20px;
+  border-radius: 10px;
+  /* background-color: #4d4c4c; White background */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+}
+
+.Depression, .Stress, .Anxiety {
+  border: 1px solid #000; /* Black border */
+  margin: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #f8f9fa; /* Light gray background */
+  color: #000; /* Black text color */
 }
 
 /* Asnmt_page.jsx css */
@@ -828,7 +890,7 @@ button:hover {
   margin: 10px;
   border-radius: 10px;
   border: 2px solid black;
-  background-color: rgb(154, 204, 243);
+  background-color: rgb(123, 218, 247);
   /* color: */
   padding: 10px;
   
@@ -853,6 +915,22 @@ button:hover {
   font-size: 25px;
   font-weight: 500;
 }
+.options {
+  margin: 20px;
+}
+
+.optionsA {
+  background-color: white;
+  border-radius: 5px;
+  border: 2px solid black;
+  padding: 5px; /* Add padding for better visual appearance */
+}
+
+.optionsB:hover {
+  background-color: blue; /* Use 'background-color' instead of 'background-image' */
+  color: white; /* Set text color to contrast with the background */
+  cursor: pointer; /* Show pointer cursor on hover */
+}
 
 
 
@@ -861,16 +939,40 @@ button:hover {
 /* For smaller screens (phones) */
 @media only screen and (max-width: 750px) {
   /* Your CSS styles here */
+  *{
+  }
   .Sidebar {
     display: none;
   }
+  .modal-side{
+    background-color: white;
+  }
+  .modal-side li{
+    background-color: white;
+  }
+  .modal-side li:hover{
+    background-color: #3ca5ce
+  }
   .left-menu li {
     display: flex;
+    background-color: #3ca5ce;
   }
   .GoogleCalendar {
     grid-column-start: 1;
     grid-column-end: 4;
   }
+  .BodyBox{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    background-image: url('./nurse.png');
+    display: flex;
+    justify-content: center;
+    
+  }
+  .mainBox{
+    width: 80%;
+  }
+
   .form {
     grid-column-start: 1;
     grid-column-end: 4;
@@ -915,16 +1017,29 @@ button:hover {
     grid-row-start: 2;
     grid-row-end: 3;
     margin: 30px auto;
-    height: 300px;
-    width: 80vw;
+    /* height: 300px; */
+    width:100%;
+    border: none;
+    background-color: rgb(253, 252, 252);
   }
   .Activity {
     grid-column-start: 1;
     grid-column-end: 4;
     grid-row-start: 3;
     grid-row-end: 4;
+    width: 80%;
+    margin: 30px auto;
+  }
+  .Box{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 4;
+    grid-row-end: 4;
     width: fit-content;
     margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
 

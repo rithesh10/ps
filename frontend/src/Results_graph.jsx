@@ -125,7 +125,7 @@ const Results_graph = () => {
           data: depression,
           borderColor: "red", // Customize the color if needed
           borderWidth: 2,
-          fill: false,
+          fill: false
         },
         {
           label: "anxiety",
@@ -145,10 +145,37 @@ const Results_graph = () => {
     };
 
     const options = {
+      plugins: {
+        subtitle: {
+          display: true,
+          text: 'Progress Graph',
+          color: '#ff0000', // Corrected property name
+          font: {
+            size: 20
+          }
+        }
+      },
+      animations: {
+        tension: {
+            duration: 1200,
+            easing: 'linear',
+            from: 1,
+            to: 0,
+            loop: true
+        }
+    },
       scales: {
-        y: {
-          beginAtZero: true,
+        x: {
+          ticks:{
+            color:'#000000'
+          }
         },
+        y: {
+          ticks:{
+            color:'#000000'
+          }
+        }
+        
       },
     };
 

@@ -137,6 +137,7 @@ const Box = () => {
       average();
     }
   };
+  
 
   return (
     <>
@@ -166,9 +167,9 @@ const Box = () => {
           <div className="type-name">overall</div>
         </div>
         <div className="options">
-          <select name="options" onChange={handleFruitSelectChange}>
-            <option value="Latest">Latest</option>
-            <option value="Overall">Overall</option>
+          <select className="optionsA" name="options" id="fruitSelect" onChange={handleFruitSelectChange}>
+            <option  value="Latest">Latest</option>
+            <option  value="Overall">Overall</option>
           </select>
         </div>
       </div>
