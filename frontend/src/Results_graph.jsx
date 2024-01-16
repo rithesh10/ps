@@ -149,21 +149,22 @@ const Results_graph = () => {
         subtitle: {
           display: true,
           text: 'Progress Graph',
-          color: '#ff0000', // Corrected property name
+          color: 'black', // Corrected property name
           font: {
             size: 20
           }
         }
       },
-      animations: {
-        tension: {
-            duration: 1200,
-            easing: 'linear',
-            from: 1,
-            to: 0,
-            loop: true
-        }
-    },
+    //   animations: {
+    //     tension: {
+    //         duration: 1200,
+    //         // easing: 'linear',
+    //         easing:'easeIn',
+    //         from: 1,
+    //         to: 0,
+    //         loop: true
+    //     }
+    // },
       scales: {
         x: {
           ticks:{
