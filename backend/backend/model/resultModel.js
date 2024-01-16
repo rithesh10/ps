@@ -17,7 +17,11 @@ const resultSchema = mongoose.Schema({
         {
             "Depression":Number,
             "Anxiety":Number,
-            "Stress":Number
+            "Stress":Number,
+            "date": {
+                type: Date,
+                default: Date.now
+            }
         }
     ]
 },

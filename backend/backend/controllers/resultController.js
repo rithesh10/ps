@@ -19,10 +19,11 @@ const resultData = asyncHandler(async (req,res)=>{
 
     const existingResult = await Result.findOne({ user});
     console.log("existing result=",existingResult);
+    const currentDate = new Date();
 
     if(existingResult)
     {
-      existingResult.options.push({Depression,Anxiety,Stress})
+      existingResult.options.push({Depression,Anxiety,Stress,currentDate})
 
       await existingResult.save();
       res.status(200).json({ message: "Result updated successfully" });

@@ -79,7 +79,7 @@ def questions():
         print(values)
 
         import pickle
-        with open('your_model.pkl', 'rb') as file:
+        with open('regression.pkl', 'rb') as file:
             loaded_model = pickle.load(file)
         predict_output=loaded_model.predict([values])
         
@@ -87,7 +87,7 @@ def questions():
 
 
         # Load the model from the pickle file
-        with open('model.pkl', 'rb') as file:
+        with open('classification.pkl', 'rb') as file:
             model = pickle.load(file)
         final_predict=model.predict(predict_output)
         print(final_predict)

@@ -2,9 +2,14 @@ import React, { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 const Asnmt_page = () => {
+
+  const navigate=useNavigate()
+
+
   const [selectedOptions, setSelectedOptions] = useState({
   });
 
@@ -48,6 +53,18 @@ const Asnmt_page = () => {
           console.log("p==",p)
           console.log("p==",p.name)
         }
+
+        const lastExamDate = localStorage.getItem('lastExamDate');
+        if (lastExamDate) {
+          const today = new Date().toLocaleDateString();
+          if (lastExamDate === today) {
+            // User has already taken the exam today, handle accordingly
+            console.log("User has already taken the exam today.");
+            alert("Exam is already taken");
+            // navigate("./dashboard")
+            return;
+          }
+        }
       } catch (error) {
         console.log(error);
         setError(error.message || 'An error occurred while fetching user data.');
@@ -72,10 +89,6 @@ const Asnmt_page = () => {
     e.preventDefault();
 
     try {
-
-    
-      
-      
       console.log(userdata)
       const combinedData = {
         userdata,
@@ -88,12 +101,19 @@ const Asnmt_page = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(combinedData),
-        
+        body: JSON.stringify(combinedData), 
       });
 
       const data = await response.json();
       console.log("Response from Flask:", data);
+
+      // Store the current date as the last exam date
+      const today = new Date().toLocaleDateString();
+      localStorage.setItem('lastExamDate', today);
+
+      navigate("./result")
+      
+
     } catch (error) {
       console.error("Error sending data to Flask:", error);
     }

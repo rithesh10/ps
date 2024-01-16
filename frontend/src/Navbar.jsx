@@ -199,19 +199,22 @@ const Navbar = () => {
         onRequestClose={() => setdet_Visible(false)}
         style={{
           content: {
-            // backgroundColor: "#e1edf7",
-            width: "0",
-            height: "0",
+            backgroundColor: "#eaf2f8",
+            width: "30vw",
+            height: "25vh",
             overflow: "hidden",
-            top: "10%",
-            left: "-1%",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
             borderRadius: "20px",
             border: "none",
           },
         }}
       >
         {
+
           <div className="stu-details">
+            
             Name : {userdata.name}
             <br />
             Rollno : {userdata.rollno}

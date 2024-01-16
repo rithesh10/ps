@@ -150,7 +150,7 @@ const Speedometer = ({ prompt }) => {
       const animationDuration = 150; // Adjust the duration of the animation in milliseconds
       const animationInterval = 40; // Adjust the interval between animation steps in milliseconds
       const steps = Math.ceil(animationDuration / animationInterval);
-      const stepValue = (prompt || 2) / steps; // Assuming a default prompt value of 2
+      const stepValue = (prompt || 0) / steps; // Assuming a default prompt value of 2
 
       let step = 0;
 
@@ -160,7 +160,7 @@ const Speedometer = ({ prompt }) => {
           step++;
           requestAnimationFrame(animate);
         } else {
-          setAnimatedScore(prompt || 2);
+          setAnimatedScore(prompt || 0);
         }
       };
 

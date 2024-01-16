@@ -21,6 +21,7 @@ const Sidebar = () => {
       <ul>
         <Link to="/dashboard"><li >Home</li></Link>
         <Link  to="/dashboard/calendar"><li>Calendar</li></Link>
+        <Link to="/dashboard/result-history"><li>Results</li></Link>
         <li onClick={()=>setcounsellor_visible(true)}>Counsellor</li>
         <Modal
         isOpen={counsellor_visible}
@@ -41,7 +42,6 @@ const Sidebar = () => {
         }}>
           <Counceller/>
         </Modal>
-        <li>Education</li>
       </ul>
       <h2>Tools</h2>
       <ul>
