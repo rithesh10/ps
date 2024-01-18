@@ -9,6 +9,7 @@ if defined _OLD_CODEPAGE (
 )
 
 set VIRTUAL_ENV=C:\Users\saima\OneDrive\Desktop\manas-health backend\flask\venv
+@REM set VIRTUAL_ENV=C:\Users\PARJAN\OneDrive\Desktop\ps\ps\backend\flask\venv
 
 if not defined PROMPT set PROMPT=$P$G
 

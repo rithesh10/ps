@@ -43,9 +43,9 @@ const Box = () => {
         setav(useroptions[useroptions.length - 1]["Anxiety"]);
         setsv(useroptions[useroptions.length - 1]["Stress"]);
 
-        console.log("depressionValue",depressionValue);
-        console.log("anxietyValue",anxietyValue);
-        console.log("stressValue",stressValue);
+        console.log("depressionValue", depressionValue);
+        console.log("anxietyValue", anxietyValue);
+        console.log("stressValue", stressValue);
 
         console.log("Depression List:", newDepressionList);
         console.log("Anxiety List:", newAnxietyList);
@@ -102,9 +102,7 @@ const Box = () => {
       }
     } catch (error) {
       console.log(error);
-      setError(
-        error.message || "An error occurred while fetching user data."
-      );
+      setError(error.message || "An error occurred while fetching user data.");
     }
   };
 
@@ -137,40 +135,46 @@ const Box = () => {
       average();
     }
   };
-  
 
   return (
     <>
-      <div className="Box">
-        <div className="depression dabba">
-          <div>
-            <Speedometer prompt={depressionValue} />
-          </div>
-          <div className="type-name">Depression</div>
-        </div>
-        <div className="stress dabba">
-          <div>
-            <Speedometer prompt={stressValue} />
-          </div>
-          <div className="type-name">Stress</div>
-        </div>
-        <div className="anxiety dabba">
-          <div>
-            <Speedometer prompt={anxietyValue} />
-          </div>
-          <div className="type-name">Anxiety</div>
-        </div>
-        <div className="overall dabba">
-          <div>
-            <Speedometer prompt={overall} />
-          </div>
-          <div className="type-name">overall</div>
-        </div>
+      <div className="latest_result">
         <div className="options">
-          <select className="optionsA" name="options" id="fruitSelect" onChange={handleFruitSelectChange}>
-            <option  value="Latest">Latest</option>
-            <option  value="Overall">Overall</option>
+          <select
+            className="optionsA"
+            name="options"
+            id="fruitSelect"
+            onChange={handleFruitSelectChange}
+          >
+            <option value="Latest">Latest</option>
+            <option value="Overall">Overall</option>
           </select>
+        </div>
+        <div className="Box">
+          <div className="depression dabba">
+            <div>
+              <Speedometer prompt={depressionValue} />
+            </div>
+            <div className="type-name">Depression</div>
+          </div>
+          <div className="stress dabba">
+            <div>
+              <Speedometer prompt={stressValue} />
+            </div>
+            <div className="type-name">Stress</div>
+          </div>
+          <div className="anxiety dabba">
+            <div>
+              <Speedometer prompt={anxietyValue} />
+            </div>
+            <div className="type-name">Anxiety</div>
+          </div>
+          <div className="overall dabba">
+            <div>
+              <Speedometer prompt={overall} />
+            </div>
+            <div className="type-name">overall</div>
+          </div>
         </div>
       </div>
     </>
@@ -178,5 +182,3 @@ const Box = () => {
 };
 
 export default Box;
-
-

@@ -19,7 +19,8 @@ a {
 /* Sidebar.jsx CSS */
 
 .Sidebar {
-  background-color: rgb(245, 246, 247);
+  background-color: rgb(199, 226, 240);
+  /* background-color: rgb(245, 246, 247); */
   padding: 3vh 10px;
   height: 94vh;
   grid-column-start: 1;
@@ -436,7 +437,6 @@ border-radius: 10px;
   grid-template-rows: 0.5fr 1fr 1fr 1fr;
   align-items: center;
   height: fit-content;
-  /* margin: 20px; */
   margin: 50px 20px 0px 20px;
   padding: 10px;
   border-radius: 20px;
@@ -604,7 +604,12 @@ background-color: white;
   padding: 4px;
   border-radius: 4px;
 }
-/* ResultsHistory */
+
+
+
+/*     ResultsHistory.jsx   */
+
+
 .BodyBox {
   grid-row-start: 2;
   grid-row-end: 4;
@@ -616,6 +621,7 @@ background-color: white;
   min-height: 100vh;
   margin: 0;
   background-image: url("./nurse.png");
+
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #f8f9fa; /* Light gray background */
@@ -868,12 +874,18 @@ button:hover {
 
 /* Box.jsx */
 
-
-.Box{
+.latest_result{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   grid-row-start: 3;
   grid-row-end: 4;
   grid-column-start: 2;
   grid-column-end: 5;
+}
+
+.Box{
   margin: auto;
   display: flex;
   height: fit-content;
@@ -939,8 +951,7 @@ button:hover {
 /* For smaller screens (phones) */
 @media only screen and (max-width: 750px) {
   /* Your CSS styles here */
-  *{
-  }
+  
   .Sidebar {
     display: none;
   }
@@ -1027,21 +1038,23 @@ button:hover {
     grid-column-end: 4;
     grid-row-start: 3;
     grid-row-end: 4;
-    width: 80%;
+    width: fit-content;
     margin: 30px auto;
   }
   .Box{
-    grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 4;
-    grid-row-end: 4;
     width: fit-content;
     margin: 30px auto;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
   }
+  .latest_result{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 4;
+    grid-row-end: 4;
 
+  }
 
   /* Changepassword.jsx */
 
@@ -1066,7 +1079,7 @@ button:hover {
 }
 
 /* For tablets */
-@media only screen and (min-width: 750px) and (max-width: 1024px) {
+@media only screen and (min-width: 750px) and (max-width: 1080px) {
   /* Navbar */
   .Navbar {
     position: fixed;
@@ -1121,10 +1134,25 @@ button:hover {
     width: fit-content;
     margin: 30px auto;
   }
+  .Box{
+    width: fit-content;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .latest_result{
+    width: fit-content;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 4;
+    grid-row-end: 4;
+
+  }
 }
 
 /* For larger screens (desktops) */
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 1081px) {
   .Sidebar {
     position: fixed;
     width: 17%;
