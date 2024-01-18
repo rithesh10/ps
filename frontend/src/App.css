@@ -19,8 +19,8 @@ a {
 /* Sidebar.jsx CSS */
 
 .Sidebar {
-  background-color: rgb(199, 226, 240);
-  /* background-color: rgb(245, 246, 247); */
+  /* background-color: rgb(199, 226, 240); */
+  background-color: rgb(245, 246, 247);
   padding: 3vh 10px;
   height: 94vh;
   grid-column-start: 1;
