@@ -8,14 +8,14 @@ import Modal from "react-modal";
 import Contactmodal from "./Contactmodal"
 import Counceller from "./Counceller";
 
-const Sidebar = () => {
+const Sidebar = ({visible}) => {
 
   const [contact_visible,setcontact_visible]=useState(false)
   const [counsellor_visible,setcounsellor_visible]=useState(false)
 
 
   return (
-    <div className="Sidebar">
+    <div className={`Sidebar ${visible ? "side-modal" : ""}`}>
       <h1>Manas Health</h1>
       <h2>General</h2>
       <ul>

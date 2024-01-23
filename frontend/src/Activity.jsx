@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Activity = () => {
   return (
     <div className='Activity'>
-      <h3># Your weekly activity #</h3>
+      <h3>Your weekly activity</h3>
       <Link to="/dashboard/assessment" className='Activity-item'> 
       <div className='Activity-quiz'></div>
         Assessment

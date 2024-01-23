@@ -2,6 +2,8 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const asyncHandler = require("express-async-handler");
 const User = require("../model/userModel");
+const Result = require( "../model/resultModel");
+
 
 const nameV = (name) => {
   return !(
@@ -209,6 +211,74 @@ const changePassword = asyncHandler(async (req, res) => {
   }
 });
 
+// profile-editing
+
+const edit_profile = asyncHandler(async (req, res) => {
+  const { name, section, rollno, phoneno, email } = req.body;
+  const user=await User.findOne({rollno});
+  const resultuser = await Result.findOne({rollno})
+
+  if(!name || !section || !rollno || !phoneno || !email){
+    res.status(400);
+    throw new Error("Please add all fields");
+  }
+
+  //Valaditation checks
+  const isNameValid = nameV(name);
+  const issecValid = true;
+  const isPhoneValid = numV(phoneno);
+  const isEmailValid = emailV(email);
+
+  const errors=[];
+
+  // Check each validaton and collect errors
+  if (!isNameValid) {
+    errors.push("Invalid name");
+  }
+  if (!issecValid) {
+    errors.push("Invalid section");
+  }
+  if (!isPhoneValid) {
+    errors.push("Invalid phone number");
+  }
+  if (!isEmailValid) {
+    errors.push("Invalid email");
+  }
+
+  // If any validatoin fails, send errors to the frontend
+  if(errors.length>0){
+    res.status(400).json({errors});
+  }else{
+    // Check if all validations pass
+    if(user){
+      user.name=name;
+      user.section=section;
+      user.phoneno=phoneno;
+      user.email=email;
+      await user.save();
+
+      resultuser.name=name;
+      await resultuser.save();
+
+      // Generate a new token after changing the password
+      const newToken=generateToken(
+        user._id,
+        user.name,
+        user.section,
+        user.phoneno,
+        user.rollno,
+        user.email,
+        user.password
+      );
+
+      res.status(200).json({
+        message:"profile edited successfully",
+        token:newToken,
+      })
+    }
+  }
+});
+
 //Generating a token i.e JWT
 const generateToken = (id, name, section, phoneno, email, rollno) => {
   return jwt.sign(
@@ -225,15 +295,16 @@ const getUsers = asyncHandler(async (req, res) => {
   res.status(200).json(users);
 });
 
-const forgotpassword = async(req,res)=>{
-  const {email}=req.body;
+const forgotpassword = async (req, res) => {
+  const { email } = req.body;
   try {
-    const user=await User.findOne({email});
-    if(!user)
-    {
-      return res.status(400).json("User not found. Email doesnot exist in database");
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res
+        .status(400)
+        .json("User not found. Email doesnot exist in database");
     }
-    const token=generateToken(
+    const token = generateToken(
       user._id,
       user.name,
       user.section,
@@ -241,13 +312,13 @@ const forgotpassword = async(req,res)=>{
       user.rollno,
       user.password,
       user.email
-    )
-    res.status(200).json(token)
-    const link=`http://localhost:2000/api/users/reset-password/${user._id}/${token}`
+    );
+    res.status(200).json(token);
+    const link = `http://localhost:2000/api/users/reset-password/${user._id}/${token}`;
   } catch (error) {
-    res.status(400).json(error)
+    res.status(400).json(error);
   }
-}
+};
 
 module.exports = {
   registerUser,
@@ -255,5 +326,6 @@ module.exports = {
   getMe,
   getUsers,
   changePassword,
-  forgotpassword
+  edit_profile,
+  forgotpassword,
 };

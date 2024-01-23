@@ -3,7 +3,12 @@ import Speedometer from "./Speedometer";
 import axios from "axios";
 
 const Box = () => {
-  const [depressionValue, setdp] = useState(0);
+  const condition=["normal","moderate","mild","severe","extremely severe"];
+  
+  // const condition=["extremely severe","severe","moderate","mild","normal"];
+
+
+  const [depressionValue, setdv] = useState(0);
   const [stressValue, setsv] = useState(0);
   const [anxietyValue, setav] = useState(0);
   const overall = (depressionValue + stressValue + anxietyValue) / 3;
@@ -11,7 +16,9 @@ const Box = () => {
   const [depression, setdepression] = useState([]);
   const [anxiety, setanxiety] = useState([]);
   const [stress, setstress] = useState([]);
+
   const [result, setResult] = useState([]);
+
   const [userdata, setuserdata] = useState({
     name: "",
     section: "",
@@ -30,6 +37,7 @@ const Box = () => {
         let userid = user.id;
         const resultOfUser = result.find((item) => item.user === userid);
         const useroptions = resultOfUser.options;
+        console.log("useroptions : ", useroptions);
 
         const newDepressionList = useroptions.map((item) => item.Depression);
         const newAnxietyList = useroptions.map((item) => item.Anxiety);
@@ -39,17 +47,17 @@ const Box = () => {
         setanxiety(newAnxietyList);
         setstress(newStressList);
 
-        setdp(useroptions[useroptions.length - 1]["Depression"]);
+        setdv(useroptions[useroptions.length - 1]["Depression"]);
         setav(useroptions[useroptions.length - 1]["Anxiety"]);
         setsv(useroptions[useroptions.length - 1]["Stress"]);
-
-        console.log("depressionValue",depressionValue);
-        console.log("anxietyValue",anxietyValue);
-        console.log("stressValue",stressValue);
 
         console.log("Depression List:", newDepressionList);
         console.log("Anxiety List:", newAnxietyList);
         console.log("Stress List:", newStressList);
+
+        console.log("depressionValue", depressionValue);
+        console.log("anxietyValue", anxietyValue);
+        console.log("stressValue", stressValue);
       } catch (error) {
         console.log("Error in useEffect:", error);
       }
@@ -102,9 +110,7 @@ const Box = () => {
       }
     } catch (error) {
       console.log(error);
-      setError(
-        error.message || "An error occurred while fetching user data."
-      );
+      setError(error.message || "An error occurred while fetching user data.");
     }
   };
 
@@ -116,61 +122,57 @@ const Box = () => {
     return sum / arr.length;
   };
 
+  const [isActive, setIsActive] = useState(true);
+
   const Latest = () => {
-    setdp(depressionValue);
-    setav(anxietyValue);
-    setsv(stressValue);
+    setdv(depression[depression.length - 1]);
+    setav(anxiety[anxiety.length - 1]);
+    setsv(stress[stress.length - 1]);
+    setIsActive(true)
   };
 
-  const average = () => {
-    setdp(calculateMean(depression));
+  const Average = () => {
+    setdv(calculateMean(depression));
     setav(calculateMean(anxiety));
     setsv(calculateMean(stress));
+    setIsActive(false)
   };
-
-  const handleFruitSelectChange = (event) => {
-    const selectedOption = event.target.value;
-
-    if (selectedOption === "Latest") {
-      Latest();
-    } else if (selectedOption === "Overall") {
-      average();
-    }
-  };
-  
-
   return (
     <>
-      <div className="Box">
-        <div className="depression dabba">
-          <div>
-            <Speedometer prompt={depressionValue} />
-          </div>
-          <div className="type-name">Depression</div>
-        </div>
-        <div className="stress dabba">
-          <div>
-            <Speedometer prompt={stressValue} />
-          </div>
-          <div className="type-name">Stress</div>
-        </div>
-        <div className="anxiety dabba">
-          <div>
-            <Speedometer prompt={anxietyValue} />
-          </div>
-          <div className="type-name">Anxiety</div>
-        </div>
-        <div className="overall dabba">
-          <div>
-            <Speedometer prompt={overall} />
-          </div>
-          <div className="type-name">overall</div>
-        </div>
+      <div className="latest_result">
         <div className="options">
-          <select className="optionsA" name="options" id="fruitSelect" onChange={handleFruitSelectChange}>
-            <option  value="Latest">Latest</option>
-            <option  value="Overall">Overall</option>
-          </select>
+          {/* <div className="options"> */}
+          <button className={`latest ${isActive ? "active" : ""}`} onClick={Latest}>Latest</button>
+          <button className={`average ${isActive ? "" : "active"}`} onClick={Average}>Overall</button>
+        </div>
+        <div className="Box">
+          <div className="depression dabba">
+            <div>
+              <Speedometer prompt={depressionValue} />
+            </div>
+            <div className="type-name">Depression</div>
+            <div>{isActive ?"is "+condition[depressionValue] :""}</div>
+          </div>
+          <div className="stress dabba">
+            <div>
+              <Speedometer prompt={stressValue} />
+            </div>
+            <div className="type-name">Stress</div>
+            <div>{isActive ?"is "+condition[stressValue] :""}</div>
+          </div>
+          <div className="anxiety dabba">
+            <div>
+              <Speedometer prompt={anxietyValue} />
+            </div>
+            <div className="type-name">Anxiety</div>
+            <div>{isActive ?"is "+condition[anxietyValue] :""}</div>
+          </div>
+          <div className="overall dabba">
+            <div>
+              <Speedometer prompt={overall} />
+            </div>
+            <div className="type-name">Overall</div>
+          </div>
         </div>
       </div>
     </>
@@ -178,5 +180,3 @@ const Box = () => {
 };
 
 export default Box;
-
-
