@@ -162,7 +162,7 @@ const Navbar = () => {
             </button>
             <button className="change-password" onClick={openChangePassword}>
               change password
-              <IoIosArrowForward
+              <IoIosArrowForward className="arrow"
                 style={{ fontSize: "17px", margin: "0px -7px -4px 10px" }}
               />
             </button>
