@@ -164,7 +164,7 @@ const Tchr_dashboard = () => {
           },
         }}
       >
-        {stu_name}
+        {/* {stu_name} */}
         {p}
         {/* {result.map((item)=>{
           {item.name==stu_name ? "found" : ""}
