@@ -123,22 +123,22 @@ const Results_graph = () => {
         {
           label: "depression",
           data: depression,
-          borderColor: "red", // Customize the color if needed
-          borderWidth: 2,
+          borderColor: "rgb(66, 124, 248)", // Customize the color if needed
+          borderWidth: 3,
           fill: false
         },
         {
           label: "anxiety",
           data: anxiety,
-          borderColor: "blue", // Customize the color if needed
-          borderWidth: 2,
+          borderColor: "rgb(233, 66, 66)", // Customize the color if needed
+          borderWidth: 3,
           fill: false,
         },
         {
           label: "stress",
           data: stress,
-          borderColor: "orange", // Customize the color if needed
-          borderWidth: 2,
+          borderColor: "rgb(250, 181, 54)", // Customize the color if needed
+          borderWidth: 3,
           fill: false,
         },
       ],
@@ -167,13 +167,19 @@ const Results_graph = () => {
     // },
       scales: {
         x: {
-          ticks:{
-            color:'#000000'
+          // ticks:{
+          //   // color:'#000000'
+          // },
+          grid:{
+            color:''
           }
         },
         y: {
-          ticks:{
-            color:'#000000'
+        //   ticks:{
+        //     // color:'#000000'
+        //   },
+          grid:{
+            color:'rgb(66, 65, 65)'
           }
         }
         

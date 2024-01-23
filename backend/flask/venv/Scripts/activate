@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\saima\OneDrive\Desktop\manas-health backend\flask\venv"
+VIRTUAL_ENV="C:\Users\PARJAN\AppData\Local\Programs\Python\Python311\python.exe"
 # VIRTUAL_ENV="C:\Users\PARJAN\OneDrive\Desktop\ps\ps\backend\flask\venv"
 export VIRTUAL_ENV
 

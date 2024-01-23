@@ -10,6 +10,7 @@ import Changepassword from "./Changepassword";
 import Sidebar from "./Sidebar";
 import Counceller from "./Counceller";
 import Contactmodal from "./Contactmodal";
+import Edit_profile from "./Edit_profile";
 
 const Navbar = () => {
   const [det_visible, setdet_Visible] = useState(false);
@@ -85,8 +86,14 @@ const Navbar = () => {
   const [contact_visible, setcontact_visible] = useState(false);
   const [counsellor_visible, setcounsellor_visible] = useState(false);
 
+  const [profile_visible, setprofile_visible] = useState(false);
+
+  const openprofile_edit = () => {
+    setprofile_visible(!profile_visible);
+    setdet_Visible(false);
+  };
+
   return (
-    // Navbar
     <nav className="Navbar">
       <div className="left-menu">
         <li onClick={openmenu}>
@@ -99,6 +106,7 @@ const Navbar = () => {
           <p>Here's the information about your activity and mental condition</p>
         </div>
       </div>
+
 
       {/* Menu Modal */}
 
@@ -116,75 +124,9 @@ const Navbar = () => {
           },
         }}
       >
-        <div className="modal-side">
-          <h1>Manas Health</h1>
-          <h2>General</h2>
-          <ul>
-            <Link to="/dashboard">
-              <li>Home</li>
-            </Link>
-            <Link to="/dashboard/calendar">
-              <li>Calendar</li>
-            </Link>
-            <li onClick={() => setcounsellor_visible(true)}>Counsellor</li>
-            <Modal
-              isOpen={counsellor_visible}
-              onRequestClose={() => setcounsellor_visible(false)}
-              style={{
-                content: {
-                  width: "fit-content",
-                  height: "fit-content",
-                  overflow: "hidden",
-                  top: "50%",
-                  left: "50%",
-                  transform: " translate(-50%, -50%)",
-                  padding: "0",
-                  margin: "0",
-                  backgroundColor: "none",
-                  borderRadius: "20px",
-                },
-              }}
-            >
-              <Counceller />
-            </Modal>
-            <li>Education</li>
-          </ul>
-          <h2>Tools</h2>
-          <ul>
-            <li onClick={() => setcontact_visible(!contact_visible)}>
-              Contact us
-            </li>
-            <Modal
-              isOpen={contact_visible}
-              onRequestClose={() => setcontact_visible(false)}
-              style={{
-                content: {
-                  width: "fit-content",
-                  height: "fit-content",
-                  overflow: "hidden",
-                  top: "50%",
-                  left: "50%",
-                  transform: " translate(-50%, -50%)",
-                  padding: "0",
-                  margin: "0",
-                  backgroundColor: "none",
-                  borderRadius: "20px",
-                },
-              }}
-            >
-              <Contactmodal />
-            </Modal>
-            <li>
-              <Link to="/">
-                <CiLogout
-                  style={{ fontSize: "17px", margin: "0px 5px -4px -3px" }}
-                />
-                Logout
-              </Link>
-            </li>
-          </ul>
-        </div>
+          <Sidebar visible={menu_visible}/>
       </Modal>
+
 
       {/* Student Details */}
 
@@ -199,26 +141,25 @@ const Navbar = () => {
         onRequestClose={() => setdet_Visible(false)}
         style={{
           content: {
-            backgroundColor: "#eaf2f8",
-            width: "30vw",
-            height: "25vh",
+            width: "0",
+            height: "0",
             overflow: "hidden",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
+            top: "10%",
+            left: "-1%",
             borderRadius: "20px",
             border: "none",
           },
         }}
       >
         {
-
           <div className="stu-details">
-            
             Name : {userdata.name}
             <br />
             Rollno : {userdata.rollno}
             <br />
+            <button className="change-password" onClick={openprofile_edit}>
+              Edit profile
+            </button>
             <button className="change-password" onClick={openChangePassword}>
               change password
               <IoIosArrowForward
@@ -228,6 +169,7 @@ const Navbar = () => {
           </div>
         }
       </Modal>
+
 
       {/* Change Password */}
 
@@ -255,6 +197,32 @@ const Navbar = () => {
             roll={userdata.rollno}
           />
         </div>
+      </Modal>
+
+
+      {/* Edit_profile */}
+
+      <Modal
+        isOpen={profile_visible}
+        style={{
+          content: {
+            backgroundColor: "none",
+            width: "fit-content",
+            height: "fit-content",
+            padding: "0",
+            overflow: "hidden",
+            top: "10%",
+            left: "",
+            borderRadius: "20px",
+          },
+        }}
+      >
+        <Edit_profile
+          isVisible={profile_visible}
+          close_profile={openprofile_edit}
+          roll={userdata.rollno}
+          profile={userdata}
+        />
       </Modal>
     </nav>
   );

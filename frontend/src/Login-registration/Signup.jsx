@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import Nav from "./Nav";
 import axios from "axios";
+import {ToastContainer,toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
   const [formdata, setFormData] = useState({
@@ -23,12 +25,12 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setNameValid(true);
-    setsecValid(true);
-    setEmailValid(true);
-    setPasswordValid(true);
-    setPhoneValid(true);
-    setUsernameValid(true);
+    // setNameValid(true);
+    // setsecValid(true);
+    // setEmailValid(true);
+    // setPasswordValid(true);
+    // setPhoneValid(true);
+    // setUsernameValid(true);
 
     if (
       formdata.name.length <= 0 ||
@@ -53,7 +55,11 @@ const Signup = () => {
         }
       );
 
-      alert("Form submitted successfully!");
+      // alert("Form submitted successfully!");
+      toast.success('Registration successful!', {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose:1000,
+      });
 
       setFormData({
         name: '',
@@ -72,33 +78,19 @@ const Signup = () => {
         const p = data.errors;
         for (let i = 0; i < p.length; i++) {
           if (p[i] == "Invalid name") {
-            // alert(p[i])
             setNameValid(false);
           } else if (p[i] == "Invalid section") {
-            // alert(p[i])
             setsecValid(false);
           } else if (p[i] == "Invalid phone number") {
-            // alert(p[i])
             setPhoneValid(false);
           } else if (p[i] == "Invalid email") {
-            // alert(p[i])
             setEmailValid(false);
           } else if (p[i] == "Invalid roll number") {
-            // alert(p[i])
             setUsernameValid(false);
           } else if (p[i] == "Invalid password") {
-            // alert(p[i])
             setPasswordValid(false);
           }
         }
-
-        // if (data.errors && Array.isArray(data.errors)) {
-        //   data.errors.forEach((error) => {
-        //   });
-        // }
-        //  else {
-        //   alert("Details already exist!");
-        // }
       } else {
         alert("Failed to submit the form. Please try again.");
       }
@@ -145,7 +137,7 @@ const Signup = () => {
               }
               required
             />
-            {!secValid && <b className="error">*Invalid mobile number</b>}
+            {!secValid && <b className="error">*Invalid section</b>}
           </div>
 
           <div className="inputs">
