@@ -149,7 +149,11 @@ const Tchr_dashboard = () => {
         }}
       >
         {stu_name}
-        {/* Anxiety : {recent_result ? result.map((item) =>{item.name===stu_name ? item.options[0].Depression : " qwertyui"}) : "not found"} */}
+        {result.map((item)=>{
+          if(item.name==stu_name){
+            
+          }
+        })}
       </Modal>
       <Modal
         isOpen={suggestion_visible}

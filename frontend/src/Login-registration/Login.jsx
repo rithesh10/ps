@@ -81,6 +81,7 @@ const Login = ({ name }) => {
         
         toast.success('Login successful!', {
           position: toast.POSITION.TOP_CENTER,
+          autoClose:1000,
         });
         navigate("/tchr_dashboard");
 
