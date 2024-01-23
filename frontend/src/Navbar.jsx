@@ -141,8 +141,10 @@ const Navbar = () => {
         onRequestClose={() => setdet_Visible(false)}
         style={{
           content: {
+
             width: "0",
             height: "0",
+
             overflow: "hidden",
             top: "10%",
             left: "-1%",
