@@ -96,7 +96,7 @@ a {
   padding: 8px 20px;
   border-radius: 20px;
   font-weight: 500;
-  background-color: #3ca5ce;
+  background-color: #54abd3;
 }
 
 .modal-side h2 {
@@ -127,7 +127,8 @@ a {
 }
 
 .Navbar {
-  background-color: 	#3ca5ce;
+  /* background-color: 	#3ca5ce; */
+  background-color: 	#54abd3;
   height: fit-content;
   margin: 0;
   display: flex;
@@ -198,7 +199,7 @@ a {
   background-color: #eaf2f8;
   font-size: 1.7rem;
   display: flex;
-  margin: 0;
+  margin: -6px;
   flex-direction: column;
   align-content: center;
   /* position: fixed; */
@@ -281,10 +282,10 @@ a {
 
 
 .change-password {
-  background-color: #b8dcf7;
+  background-color: #eaf2f8;
   border-radius: 10px;
   border: 1px solid black;
-  padding: 3px 10px;
+  /* padding: 3px 10px; */
   margin: 15px auto 0px auto;
   cursor: pointer;
 }
@@ -400,10 +401,12 @@ a {
   padding: 10px;
   margin: 50px auto 0px 20px;
   /* margin: 20px auto 10px 20px; */
-  border-radius: 27px;
+  border-radius: 17px;
   /* background-image: url("https://datavizcatalogue.com/methods/images/top_images/area_graph.png"); */
   background-repeat: no-repeat;
-  background-color: rgb(252, 251, 251);
+  /* background-color: rgb(252, 251, 251); */
+  background-color: rgb(237, 243, 253);
+  /* background:linear-gradient(90deg, #f39c12, #3498db); */
   background-size: cover;
   grid-column-start: 2;
   grid-column-end: 3;
@@ -426,7 +429,8 @@ border-radius: 10px;
 /* Activity.jsx CSS */
 
 .Activity {
-  background-color: rgb(252, 180, 73);
+  /* background-color: rgb(252, 180, 73); */
+  background: linear-gradient(45deg, #ffe7bc, #f39c12);
   grid-column-start: 3;
   grid-column-end: 4;
   grid-row-start: 2;
@@ -615,7 +619,7 @@ background-color: white;
   align-items: center;
   min-height: 100vh;
   margin: 0;
-  background-image: url("./nurse.png");
+  background-image: url("./nurse.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #f8f9fa; /* Light gray background */
@@ -1010,6 +1014,13 @@ button:hover {
   .stu-details {
     /* modal */
     font-size: 13px;
+  }
+  .change-password{
+    font-size: 13px;
+    display:flex;
+  }
+  .arrow{
+    margin-top: 10px;
   }
   .Results_graph {
     grid-column-start: 1;

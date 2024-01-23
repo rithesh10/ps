@@ -199,7 +199,7 @@ const Navbar = () => {
         onRequestClose={() => setdet_Visible(false)}
         style={{
           content: {
-            backgroundColor: "#eaf2f8",
+            backgroundColor: "#54abd3",
             width: "30vw",
             height: "25vh",
             overflow: "hidden",
@@ -221,7 +221,7 @@ const Navbar = () => {
             <br />
             <button className="change-password" onClick={openChangePassword}>
               change password
-              <IoIosArrowForward
+              <IoIosArrowForward className="arrow"
                 style={{ fontSize: "17px", margin: "0px -7px -4px 10px" }}
               />
             </button>
