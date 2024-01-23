@@ -46,16 +46,16 @@ const Results_graph = () => {
         setav(useroptions[useroptions.length - 1]["Anxiety"]);
         setsv(useroptions[useroptions.length - 1]["Stress"]);
 
-        console.log("depressionValue",depressionValue);
-        console.log("anxietyValue",anxietyValue);
-        console.log("stressValue",stressValue);
+        // console.log("depressionValue",depressionValue);
+        // console.log("anxietyValue",anxietyValue);
+        // console.log("stressValue",stressValue);
 
-        console.log("Depression List:", newDepressionList);
-        console.log("Anxiety List:", newAnxietyList);
-        console.log("Stress List:", newStressList);
-        console.log("ddd",depression);
-        console.log("ddd",stress);
-        console.log("ddd",anxiety);
+        // console.log("Depression List:", newDepressionList);
+        // console.log("Anxiety List:", newAnxietyList);
+        // console.log("Stress List:", newStressList);
+        // console.log("ddd",depression);
+        // console.log("ddd",stress);
+        // console.log("ddd",anxiety);
       } catch (error) {
         console.log("Error in useEffect:", error);
       }
@@ -220,7 +220,7 @@ const Results_graph = () => {
         "http://localhost:2000/api/result/all-result"
       );
       setResult(response.data);
-      console.log(response.data);
+      // console.log(response.data);
       return response.data;
     } catch (error) {
       console.error("Error fetching user result:", error);
@@ -230,7 +230,7 @@ const Results_graph = () => {
   const fetchStudent = async () => {
     try {
       const accessToken = localStorage.getItem("accessToken");
-      console.log("Token : ", accessToken);
+      // console.log("Token : ", accessToken);
       if (!accessToken) {
         setError("Access token not found");
         return;
@@ -253,7 +253,7 @@ const Results_graph = () => {
           email: response.data.email,
           password: response.data.password,
         });
-        console.log(response.data);
+        // console.log(response.data);
         return response.data;
       }
     } catch (error) {

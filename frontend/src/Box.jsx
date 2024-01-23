@@ -37,7 +37,7 @@ const Box = () => {
         let userid = user.id;
         const resultOfUser = result.find((item) => item.user === userid);
         const useroptions = resultOfUser.options;
-        console.log("useroptions : ", useroptions);
+        // console.log("useroptions : ", useroptions);
 
         const newDepressionList = useroptions.map((item) => item.Depression);
         const newAnxietyList = useroptions.map((item) => item.Anxiety);
@@ -51,13 +51,13 @@ const Box = () => {
         setav(useroptions[useroptions.length - 1]["Anxiety"]);
         setsv(useroptions[useroptions.length - 1]["Stress"]);
 
-        console.log("Depression List:", newDepressionList);
-        console.log("Anxiety List:", newAnxietyList);
-        console.log("Stress List:", newStressList);
+        // console.log("Depression List:", newDepressionList);
+        // console.log("Anxiety List:", newAnxietyList);
+        // console.log("Stress List:", newStressList);
 
-        console.log("depressionValue", depressionValue);
-        console.log("anxietyValue", anxietyValue);
-        console.log("stressValue", stressValue);
+        // console.log("depressionValue", depressionValue);
+        // console.log("anxietyValue", anxietyValue);
+        // console.log("stressValue", stressValue);
       } catch (error) {
         console.log("Error in useEffect:", error);
       }
@@ -72,7 +72,7 @@ const Box = () => {
         "http://localhost:2000/api/result/all-result"
       );
       setResult(response.data);
-      console.log(response.data);
+      // console.log(response.data);
       return response.data;
     } catch (error) {
       console.error("Error fetching user result:", error);
@@ -82,7 +82,7 @@ const Box = () => {
   const fetchStudent = async () => {
     try {
       const accessToken = localStorage.getItem("accessToken");
-      console.log("Token : ", accessToken);
+      // console.log("Token : ", accessToken);
       if (!accessToken) {
         setError("Access token not found");
         return;
@@ -105,7 +105,7 @@ const Box = () => {
           email: response.data.email,
           password: response.data.password,
         });
-        console.log(response.data);
+        // console.log(response.data);
         return response.data;
       }
     } catch (error) {
