@@ -2,6 +2,8 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const asyncHandler = require("express-async-handler");
 const User = require("../model/userModel");
+const Result = require( "../model/resultModel");
+
 
 const nameV = (name) => {
   return !(
@@ -214,6 +216,7 @@ const changePassword = asyncHandler(async (req, res) => {
 const edit_profile = asyncHandler(async (req, res) => {
   const { name, section, rollno, phoneno, email } = req.body;
   const user=await User.findOne({rollno});
+  const resultuser = await Result.findOne({rollno})
 
   if(!name || !section || !rollno || !phoneno || !email){
     res.status(400);
@@ -253,6 +256,9 @@ const edit_profile = asyncHandler(async (req, res) => {
       user.phoneno=phoneno;
       user.email=email;
       await user.save();
+
+      resultuser.name=name;
+      await resultuser.save();
 
       // Generate a new token after changing the password
       const newToken=generateToken(

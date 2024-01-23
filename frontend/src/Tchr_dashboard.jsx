@@ -7,6 +7,9 @@ import Results_graph from "./Results_graph";
 import { IoClose } from "react-icons/io5";
 
 const Tchr_dashboard = () => {
+
+  const condition=["normal","moderate","mild","severe","extremely severe"];
+
   const [depressionValue, setdp] = useState(0);
   const [stressValue, setsv] = useState(0);
   const [anxietyValue, setav] = useState(0);
@@ -91,13 +94,26 @@ const Tchr_dashboard = () => {
 
   const [stu_name, setstu_name] = useState("");
   const [recent_result, setrecent_result] = useState(false);
+  const [p, setp] = useState("No recent result found");
+
   const [stu_condition, setstu_condition] = useState(false);
   const open_condition = async (name) => {
     setstu_name(name);
+    setp("\n No recent result found");
     setrecent_result(false);
     result.map((item) => {
-      if (item.name === stu_name) {
+      if (item.name === name) {
         setrecent_result(true);
+        const newdate=new Date(item.options[item.options.length-1].date).toISOString().split("T")[0];
+        setp(
+          <p>
+            Date : {newdate} <br />
+            {/* Date : {item.options[item.options.length-1].date.toISOString().split("T")[0]} <br /> */}
+            Depression : {condition[item.options[item.options.length - 1].Depression]} <br />
+            Anxiety : {condition[item.options[item.options.length - 1].Anxiety]} <br />
+            Stress : {condition[item.options[item.options.length - 1].Stress]} <br />
+          </p>
+        );
       }
     });
     setstu_condition(!stu_condition);
@@ -149,11 +165,12 @@ const Tchr_dashboard = () => {
         }}
       >
         {stu_name}
-        {result.map((item)=>{
-          if(item.name==stu_name){
-            
-          }
-        })}
+        {p}
+        {/* {result.map((item)=>{
+          {item.name==stu_name ? "found" : ""}
+        })} */}
+
+        {/* Anxiety : {recent_result ? result.map((item) =>{item.name===stu_name ? item.options[0].Depression : " qwertyui"}) : "not found"} */}
       </Modal>
       <Modal
         isOpen={suggestion_visible}
