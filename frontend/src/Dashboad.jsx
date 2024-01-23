@@ -16,7 +16,6 @@ const Dashboad = () => {
       <Results_graph/>
       <Activity/>
       <Box/>
-      {/* <Results/> */}
       {/* <Footer/> */}
     </>
   )

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import Sidebar from './Sidebar';
-import Navbar from './Navbar';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import Sidebar from "./Sidebar";
+import Navbar from "./Navbar";
+import axios from "axios";
 
 const ResultsHistory = () => {
-  const [depressionValue, setdp] = useState(0);
+  const [depressionValue, setdv] = useState(0);
   const [stressValue, setsv] = useState(0);
   const [anxietyValue, setav] = useState(0);
   const overall = (depressionValue + stressValue + anxietyValue) / 3;
@@ -12,7 +12,7 @@ const ResultsHistory = () => {
   const [depression, setdepression] = useState([]);
   const [anxiety, setanxiety] = useState([]);
   const [stress, setstress] = useState([]);
-  const [dailydate,setdailydate]=useState([]);
+  const [dates, setdates] = useState([]);
   const [result, setResult] = useState([]);
   const [userdata, setuserdata] = useState({
     name: "",
@@ -29,42 +29,36 @@ const ResultsHistory = () => {
       try {
         const user = await fetchStudent();
         const results = await fetchResult();
+        console.log("results : ", results);
         const userid = user.id;
         const resultOfUser = results.find((item) => item.user === userid);
 
         if (resultOfUser) {
-          const useroptions = resultOfUser.options;
-          console.log(useroptions)
-          const newDepressionList = useroptions.map((item) => item.Depression);
-          const newAnxietyList = useroptions.map((item) => item.Anxiety);
-          const newStressList = useroptions.map((item) => item.Stress);
-          // const newdailydateList = useroptions.map((item)=>item.date);
+          const stu_results = resultOfUser.options;
+          console.log("stu_results : ", stu_results);
 
-          const newDailyDateList = useroptions.map((item) => {
+          setdepression(stu_results.map((item) => item.Depression));
+          setanxiety(stu_results.map((item) => item.Anxiety));
+          setstress(stu_results.map((item) => item.Stress));
+
+          setdv(depression[depression.length - 1]);
+          setav(anxiety[anxiety.length - 1]);
+          setsv(stress[stress.length - 1]);
+
+          const newDailyDateList = stu_results.map((item) => {
             const dateObject = new Date(item.date);
-            return dateObject.toISOString().split('T')[0];
-        });
-        
-        console.log(newDailyDateList);
-        
+            return dateObject.toISOString().split("T")[0];
+          });
 
-          setdepression(newDepressionList);
-          setanxiety(newAnxietyList);
-          setstress(newStressList);
-          
-          setdailydate(newDailyDateList);
-          setdp(newDepressionList[newDepressionList.length - 1]);
-          setav(newAnxietyList[newAnxietyList.length - 1]);
-          setsv(newStressList[newStressList.length - 1]);
+          setdates(newDailyDateList);
 
-          console.log("depressionValue", newDepressionList[newDepressionList.length - 1]);
-          console.log("anxietyValue", newAnxietyList[newAnxietyList.length - 1]);
-          console.log("stressValue", newStressList[newStressList.length - 1]);
-
-          console.log("Depression List:", newDepressionList);
-          console.log("Anxiety List:", newAnxietyList);
-          console.log("Stress List:", newStressList);
-          console.log("date: ",newDailyDateList);
+          console.log("Depression :", depression);
+          console.log("Anxiety :", anxiety);
+          console.log("Stress :", stress);
+          console.log("dates : ", dates);
+          console.log("d-value",depressionValue)
+          console.log("a-value",anxietyValue)
+          console.log("s-value",stressValue)
         }
       } catch (error) {
         console.log("Error in useEffect:", error);
@@ -76,9 +70,11 @@ const ResultsHistory = () => {
 
   const fetchResult = async () => {
     try {
-      const response = await axios.get("http://localhost:2000/api/result/all-result");
-      setResult(response.data);
-      console.log(response.data);
+      const response = await axios.get(
+        "http://localhost:2000/api/result/all-result"
+      );
+      // setResult(response.data);
+      // console.log("result : ",response.data);
       return response.data;
     } catch (error) {
       console.error("Error fetching user result:", error);
@@ -93,12 +89,15 @@ const ResultsHistory = () => {
         setError("Access token not found");
         return;
       }
-      const response = await axios.get("http://localhost:2000/api/users/student-profile", {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.get(
+        "http://localhost:2000/api/users/student-profile",
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (response && response.data) {
         setuserdata({
@@ -109,7 +108,7 @@ const ResultsHistory = () => {
           email: response.data.email,
           password: response.data.password,
         });
-        console.log(response.data);
+        // console.log(response.data);
         return response.data;
       }
     } catch (error) {
@@ -119,17 +118,19 @@ const ResultsHistory = () => {
   };
 
   const totalWeeks = depression.length;
-  console.log("depression:",depression);
-  console.log("stress:",stress);
-  console.log("anxiety:",anxiety);
-  console.log(dailydate);
-  const DateList = dailydate;
-  const [dep, setdep] = useState();
-  const [str, setstr] = useState();
-  const [anx, setanx] = useState();
+  
+  const [dep, setdep] = useState(0);
+  const [str, setstr] = useState(0);
+  const [anx, setanx] = useState(0);
   const [date, setdate] = useState();
 
+  useEffect(() => {
+    latest(totalWeeks);
+  }, []);
+
   const handleWeekChange = (selectedWeek) => {
+    console.log("total:", totalWeeks);
+    console.log("week:", selectedWeek);
     latest(selectedWeek);
   };
 
@@ -137,22 +138,28 @@ const ResultsHistory = () => {
     setdep(depression[selectedWeek - 1]);
     setstr(stress[selectedWeek - 1]);
     setanx(anxiety[selectedWeek - 1]);
-    setdate(DateList[selectedWeek - 1]);
+    setdate(dates[selectedWeek - 1]);
   };
 
+  const [results, setresults] = useState([]);
+
   const renderResults = () => {
-    const results = [];
+    const r = [];
     for (let week = 1; week <= totalWeeks; week++) {
-      results.push(<option key={week} value={week}>Week {week}</option>);
+      r.push(
+        <option key={week} value={week}>
+          Attempt {week}
+        </option>
+      );
     }
-    return results;
+    return r;
   };
 
   return (
     <>
       <Sidebar />
       <Navbar />
-      <div className='BodyBox'>
+      <div className="BodyBox">
         <div className="mainBox">
           <div className="Depression">
             Depression is recorded as {dep} on {date}
@@ -163,7 +170,11 @@ const ResultsHistory = () => {
           <div className="Anxiety">
             Anxiety is recorded as {anx} on {date}
           </div>
-          <select name="weekSelector" id="weekSelector" onChange={(e) => handleWeekChange(e.target.value)}>
+          <select
+            name="weekSelector"
+            className="weekSelector"
+            onChange={(e) => handleWeekChange(e.target.value)}
+          >
             {renderResults()}
           </select>
         </div>
