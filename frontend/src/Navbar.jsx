@@ -34,7 +34,7 @@ const Navbar = () => {
     const fetchData = async () => {
       try {
         const accessToken = localStorage.getItem("accessToken");
-        console.log("Token : ", accessToken);
+        // console.log("Token : ", accessToken);
         if (!accessToken) {
           setError("Access token not found"); // Handle missing token
           return;
@@ -58,7 +58,7 @@ const Navbar = () => {
             email: response.data.email,
             password: response.data.password,
           });
-          console.log(response.data);
+          // console.log(response.data);
         }
       } catch (error) {
         console.log(error);
@@ -141,8 +141,10 @@ const Navbar = () => {
         onRequestClose={() => setdet_Visible(false)}
         style={{
           content: {
+
             width: "0",
             height: "0",
+
             overflow: "hidden",
             top: "10%",
             left: "-1%",

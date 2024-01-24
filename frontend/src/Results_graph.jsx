@@ -46,16 +46,16 @@ const Results_graph = () => {
         setav(useroptions[useroptions.length - 1]["Anxiety"]);
         setsv(useroptions[useroptions.length - 1]["Stress"]);
 
-        console.log("depressionValue",depressionValue);
-        console.log("anxietyValue",anxietyValue);
-        console.log("stressValue",stressValue);
+        // console.log("depressionValue",depressionValue);
+        // console.log("anxietyValue",anxietyValue);
+        // console.log("stressValue",stressValue);
 
-        console.log("Depression List:", newDepressionList);
-        console.log("Anxiety List:", newAnxietyList);
-        console.log("Stress List:", newStressList);
-        console.log("ddd",depression);
-        console.log("ddd",stress);
-        console.log("ddd",anxiety);
+        // console.log("Depression List:", newDepressionList);
+        // console.log("Anxiety List:", newAnxietyList);
+        // console.log("Stress List:", newStressList);
+        // console.log("ddd",depression);
+        // console.log("ddd",stress);
+        // console.log("ddd",anxiety);
       } catch (error) {
         console.log("Error in useEffect:", error);
       }
@@ -124,21 +124,27 @@ const Results_graph = () => {
           label: "depression",
           data: depression,
           borderColor: "rgb(66, 124, 248)", // Customize the color if needed
+
           borderWidth: 3,
+
           fill: false
         },
         {
           label: "anxiety",
           data: anxiety,
           borderColor: "rgb(233, 66, 66)", // Customize the color if needed
+
           borderWidth: 3,
+
           fill: false,
         },
         {
           label: "stress",
           data: stress,
           borderColor: "rgb(250, 181, 54)", // Customize the color if needed
+
           borderWidth: 3,
+
           fill: false,
         },
       ],
@@ -167,6 +173,7 @@ const Results_graph = () => {
     // },
       scales: {
         x: {
+
           // ticks:{
           //   // color:'#000000'
           // },
@@ -178,6 +185,7 @@ const Results_graph = () => {
         //   ticks:{
         //     // color:'#000000'
         //   },
+
           grid:{
             color:'rgb(66, 65, 65)'
           }
@@ -212,7 +220,7 @@ const Results_graph = () => {
         "http://localhost:2000/api/result/all-result"
       );
       setResult(response.data);
-      console.log(response.data);
+      // console.log(response.data);
       return response.data;
     } catch (error) {
       console.error("Error fetching user result:", error);
@@ -222,7 +230,7 @@ const Results_graph = () => {
   const fetchStudent = async () => {
     try {
       const accessToken = localStorage.getItem("accessToken");
-      console.log("Token : ", accessToken);
+      // console.log("Token : ", accessToken);
       if (!accessToken) {
         setError("Access token not found");
         return;
@@ -245,7 +253,7 @@ const Results_graph = () => {
           email: response.data.email,
           password: response.data.password,
         });
-        console.log(response.data);
+        // console.log(response.data);
         return response.data;
       }
     } catch (error) {

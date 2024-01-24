@@ -7,8 +7,13 @@ import Results_graph from "./Results_graph";
 import { IoClose } from "react-icons/io5";
 
 const Tchr_dashboard = () => {
-
-  const condition=["normal","moderate","mild","severe","extremely severe"];
+  const condition = [
+    "normal",
+    "moderate",
+    "mild",
+    "severe",
+    "extremely severe",
+  ];
 
   const [depressionValue, setdp] = useState(0);
   const [stressValue, setsv] = useState(0);
@@ -87,8 +92,14 @@ const Tchr_dashboard = () => {
     getdata();
   }, []);
 
+  const [suggestion, setsuggestion] = useState(""); ///
+  const [selectedStudent, setSelectedStudent] = useState(null);
+
   const [suggestion_visible, setsuggestion_visible] = useState(false);
-  const open_suggestion = () => {
+
+
+  const open_suggestion = (item) => {
+    setSelectedStudent(item);
     setsuggestion_visible(!suggestion_visible);
   };
 
@@ -104,14 +115,23 @@ const Tchr_dashboard = () => {
     result.map((item) => {
       if (item.name === name) {
         setrecent_result(true);
-        const newdate=new Date(item.options[item.options.length-1].date).toISOString().split("T")[0];
+        const newdate = new Date(item.options[item.options.length - 1].date)
+          .toISOString()
+          .split("T")[0];
         setp(
           <p>
             Date : {newdate} <br />
             {/* Date : {item.options[item.options.length-1].date.toISOString().split("T")[0]} <br /> */}
-            Depression : {condition[item.options[item.options.length - 1].Depression]} <br />
-            Anxiety : {condition[item.options[item.options.length - 1].Anxiety]} <br />
-            Stress : {condition[item.options[item.options.length - 1].Stress]} <br />
+            Depression :{" "}
+            {condition[item.options[item.options.length - 1].Depression]} <br />
+            Anxiety : {
+              condition[item.options[item.options.length - 1].Anxiety]
+            }{" "}
+            <br />
+            Stress : {
+              condition[item.options[item.options.length - 1].Stress]
+            }{" "}
+            <br />
           </p>
         );
       }
@@ -120,11 +140,29 @@ const Tchr_dashboard = () => {
   };
 
   //////// Suggestion box
-
-  const [suggestion, setsuggestion] = useState("");
-
   const handleTextareaChange = (e) => {
     setsuggestion(e.target.value);
+  };
+
+
+  const submitSuggestion = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:2000/api/teacher/student-suggestion",
+        {
+          name: selectedStudent.name,
+          suggestion: suggestion,
+          id:selectedStudent._id
+        }
+      );
+  
+      // Handle the response if needed
+  
+      // Close the suggestion modal
+      setsuggestion_visible(false);
+    } catch (error) {
+      console.error("Error submitting suggestion:", error);
+    }
   };
 
   return (
@@ -137,7 +175,7 @@ const Tchr_dashboard = () => {
             <div>{item.rollno}</div>
             <div>{item.phoneno}</div>
             <button onClick={() => open_condition(item.name)}>Condition</button>
-            <button onClick={open_suggestion}>Suggetion</button>
+            <button onClick={()=>open_suggestion(item)}>Suggetion</button>
           </li>
         ))}
       </div>
@@ -166,11 +204,6 @@ const Tchr_dashboard = () => {
       >
         {/* {stu_name} */}
         {p}
-        {/* {result.map((item)=>{
-          {item.name==stu_name ? "found" : ""}
-        })} */}
-
-        {/* Anxiety : {recent_result ? result.map((item) =>{item.name===stu_name ? item.options[0].Depression : " qwertyui"}) : "not found"} */}
       </Modal>
       <Modal
         isOpen={suggestion_visible}
@@ -193,7 +226,14 @@ const Tchr_dashboard = () => {
           },
         }}
       >
-        <form action="" style={{ display: "flex", flexDirection: "column" }}>
+        <form
+          action=""
+          style={{ display: "flex", flexDirection: "column" }}
+          onSubmit={(e) => {
+            e.preventDefault();
+            submitSuggestion();
+          }}
+        >
           <IoClose
             className="close-CP"
             onClick={() => {

@@ -99,7 +99,7 @@ a {
   padding: 8px 20px;
   border-radius: 20px;
   font-weight: 500;
-  background-color: #3ca5ce;
+  background-color: #54abd3;
 }
 
 .modal-side h2 {
@@ -131,6 +131,8 @@ a {
 }
 
 .Navbar {
+
+
   background-color: 	#54abd3;
   height: fit-content;
   margin: 0;
@@ -202,6 +204,9 @@ a {
   background-color:  #eaf2f8;
   font-size: 1.3rem;
   display: flex;
+
+  margin: -6px;
+
   flex-direction: column;
   align-content: center;
   position: fixed;
@@ -277,12 +282,14 @@ a {
 
 
 .change-password {
+
   width: 150px;
   background-color:  #54abd3;
   border-radius: 10px;
   border: 1px solid black;
   padding: 3px 10px;
   margin: 10px auto 0px auto;
+
   cursor: pointer;
   transition: 0.3s ease;
 }
@@ -473,10 +480,12 @@ a {
   padding: 10px;
   margin: 50px auto 0px 20px;
   /* margin: 20px auto 10px 20px; */
-  border-radius: 27px;
+  border-radius: 17px;
   /* background-image: url("https://datavizcatalogue.com/methods/images/top_images/area_graph.png"); */
   background-repeat: no-repeat;
+
   background-color: rgb(237, 243, 253);
+
   background-size: cover;
   grid-column-start: 2;
   grid-column-end: 3;
@@ -499,8 +508,10 @@ border-radius: 10px;
 /* Activity.jsx CSS */
 
 .Activity {
+
   background: linear-gradient(45deg,#d7bb88,#f39c12);
   /* background: linear-gradient(45deg,#ffe7bc,#f39c12); */
+
   grid-column-start: 3;
   grid-column-end: 4;
   grid-row-start: 2;
@@ -695,7 +706,9 @@ background-color: white;
   align-items: center;
   min-height: 100vh;
   margin: 0;
+
   background-image: url("./nurse.png");
+
 
   background-repeat: no-repeat;
   background-size: cover;
@@ -1209,6 +1222,7 @@ button:hover {
     font-size: 13px;
   }
 
+
   /* Sidebar.jsx */
 
   .Sidebar {
@@ -1245,6 +1259,7 @@ button:hover {
 
 
   /* result-graph.jsx */
+
 
   .Results_graph {
     grid-column-start: 1;
