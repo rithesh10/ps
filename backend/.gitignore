@@ -2,7 +2,7 @@ node_modules
 .env
 
 # .gitignore
-
+/flask
 # Virtual Environment
 venv/
 env/
