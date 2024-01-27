@@ -117,8 +117,13 @@ const Results_graph = () => {
   const updateChart = () => {
     const lineChartCtx = document.getElementById("lineChart").getContext("2d");
 
+    const label=[]
+    for (let i = 0; i < depression.length; i++) {
+      label[i]=i+1
+      
+    }
     const lineChartData = {
-      labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      labels: label,
       datasets: [
         {
           label: "depression",

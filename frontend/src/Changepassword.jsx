@@ -69,8 +69,7 @@ const Changepassword = ({ isVisible, closemodal, roll }) => {
 
   return (
     <>
-      <div
-        className="CP-body "
+      <div className="CP-body"
         style={{ display: isVisible ? "block" : "none" }}
       >
         <form id="student" className="CP-box changepass" onSubmit={click}>

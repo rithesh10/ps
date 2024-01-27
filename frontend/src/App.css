@@ -430,6 +430,10 @@ a {
   border-radius: 20px;
   width: 350px;
   border: none;
+  grid-row-start: 1;
+  grid-row-end: 5;
+  grid-column-start: 1;
+  grid-column-end: 5;
 }
 
 .Forget-password input {

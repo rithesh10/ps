@@ -99,7 +99,7 @@ const Login = ({ name }) => {
   const [FP, setFP] = useState(false);
 
   const openFP = () => {
-    alert("Endhuk marchipoinav ra pulka....");
+    setFP(true)
   };
 
   return (
@@ -147,13 +147,13 @@ const Login = ({ name }) => {
             }
             required
             />
-          <a className="forget" onClick={openFP}>
+          <Link to="/Password-reset" className="forget" onClick={openFP} >
             Forget Password ?
-          </a>
+          </Link>
 
           {/* <Modal
             isOpen={FP}
-            onRequestClose={() => setFP(false)}
+            // onRequestClose={() => setFP(false)}
             style={{
               content: {
                 width: "fit-content",
@@ -166,8 +166,8 @@ const Login = ({ name }) => {
               },
             }}
           >
-            <Forgetpassword className="modal-FP"/>
-          </Modal> */}
+            <Forgetpassword visible={FP}/>
+          </Modal>  */}
 
           <p className="error">{p}</p>
           <button type="submit" className="lg-btn">

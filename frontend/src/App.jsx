@@ -27,6 +27,7 @@ import Results from "./Results.jsx";
 import ResultsHistory from "./ResultsHistory.jsx";
 import Tchr_dashboard from "./Tchr_dashboard.jsx"
 import Edit_profile from "./Edit_profile.jsx";
+import Password_reset from "./Password_reset.jsx";
 
 
 const App = () => {
@@ -41,7 +42,9 @@ const App = () => {
         <Route path="/dashboard/assessment" element={<Asnmt_page />} />
         <Route path="/dashboard" element={<Dashboad />} />
         <Route path="/dashboard/calendar" element={<GoogleCalendar />} />
-        <Route path="/Pasword-reset" element={<Forgetpassword />} />
+        <Route path="/Password-reset" element={<Forgetpassword />} />
+        <Route path="/reset-password/:id/:token" element={<Password_reset/>} />
+        
         <Route path="/tchr_dashboard" element={<Tchr_dashboard/>}/>
         <Route path="/dashboard/assessment/result" element={<Results/>} />
         <Route path="/dashboard/result-history" element={<ResultsHistory/>} />
