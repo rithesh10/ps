@@ -20,15 +20,17 @@ import Buttons from "./Login-registration/Buttons.jsx";
 import Signup from "./Login-registration/Signup.jsx";
 import Asnmt_page from "./Asnmt_page.jsx";
 import Forgetpassword from "./Forgetpassword.jsx";
-import Box from "./Box.jsx";
+import Box from "./Box.jsx"
 import Results from "./Results.jsx";
 import ResultsHistory from "./ResultsHistory.jsx";
-import Tchr_dashboard from "./Tchr_dashboard.jsx";
+import Tchr_dashboard from "./Tchr_dashboard.jsx"
 import Edit_profile from "./Edit_profile.jsx";
 import Working from "./Working.jsx";
 import Meditation from "./Meditation.jsx";
 import Yoga from "./Yoga.jsx";
 import Password_reset from "./Password_reset.jsx";
+// >>>>>>> a460dddd2cab92b0f8ebc97891bd60d74707316f
+
 
 const App = () => {
   return (
@@ -43,13 +45,19 @@ const App = () => {
         <Route path="/dashboard" element={<Dashboad />} />
         <Route path="/dashboard/calendar" element={<GoogleCalendar />} />
         <Route path="/Pasword-reset" element={<Forgetpassword />} />
-        <Route path="/dashboard/meditation" element={<Meditation />} />
-        <Route path="/dashboard/yoga" element={<Yoga />} />
+        <Route path="/dashboard/meditation" element={<Meditation/>} />
+        <Route path="/dashboard/yoga" element={<Yoga/>} />
 
         <Route path="/Password-reset" element={<Forgetpassword />} />
-        <Route path="/reset-password/:id/:token" element={<Password_reset />} />
+        <Route path="/reset-password/:id/:token" element={<Password_reset/>} />
+        <Route path="/dashboard/assessment/result" element={<Results/>} />
+        <Route path="/dashboard/result-history" element={<ResultsHistory/>} />
+        <Route path="/tchr_dashboard" element={<Tchr_dashboard/>}/>
+        <Route path="/dashboard/profile" element={<Edit_profile/>} />
+        <Route path="/working" element={<Working/>} /> 
+        
       </Routes>
-      <ToastContainer />
+      <ToastContainer/>
     </div>
   );
 };
