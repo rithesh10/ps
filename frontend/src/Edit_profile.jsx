@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {ToastContainer,toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { IoClose } from "react-icons/io5";
@@ -43,64 +43,65 @@ const Edit_profile = ({ isVisible, close_profile, roll, profile }) => {
     e.preventDefault();
     console.log("profile : ", profile);
     console.log("formdata : ", formdata);
+    if (profile.name == formdata.name && profile.email == formdata.email && profile.phoneno == formdata.phoneno && profile.section==formdata.section) {
+      alert("NO cahnges done to update");
+    } else {
+      if (
+        formdata.name.length <= 0 ||
+        formdata.section.length <= 0 ||
+        formdata.phoneno.length <= 0 ||
+        formdata.email.length <= 0 ||
+        formdata.rollno.length <= 0
+      ) {
+        alert("please complete filling the form before submitting.");
+        return;
+      }
 
-    if (
-      formdata.name.length <= 0 ||
-      formdata.section.length <= 0 ||
-      formdata.phoneno.length <= 0 ||
-      formdata.email.length <= 0 ||
-      formdata.rollno.length <= 0
-    ) {
-      alert("please complete filling the form before submitting.");
-      return;
-    }
-
-    try {
-      const response = await axios.post(
-        "http://localhost:2000/api/users/student-edit-profile",
-        formdata,
-        {
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-      setNameValid(true)
-      setEmailValid(true)
-      setPhoneValid(true)
-      setEmailValid(true)
-      setUsernameValid(true)
-
-      toast.success('Profile Updated successfully!', {
-        position: toast.POSITION.TOP_CENTER,
-        autoClose:2000,
-      });
-
-
-      setTimeout(() => {
-        window.location.reload();
-      }, 3000);
-
-    } catch (error) {
-      console.log(error)
-      if(error.response && error.response.status===400){
-        const{data}=error.response;
-        console.log("errors : ",data)
-
-        const p=data.errors;
-        for (let i = 0; i < p.length; i++) {
-          if (p[i] == "Invalid name") {
-            setNameValid(false);
-          } else if (p[i] == "Invalid section") {
-            setsecValid(false);
-          } else if (p[i] == "Invalid phone number") {
-            setPhoneValid(false);
-          } else if (p[i] == "Invalid email") {
-            setEmailValid(false);
-          } else if (p[i] == "Invalid roll number") {
-            setUsernameValid(false);
+      try {
+        const response = await axios.post(
+          "http://localhost:2000/api/users/student-edit-profile",
+          formdata,
+          {
+            headers: { "Content-Type": "application/json" },
           }
+        );
+        setNameValid(true);
+        setEmailValid(true);
+        setPhoneValid(true);
+        setEmailValid(true);
+        setUsernameValid(true);
+
+        toast.success("Profile Updated successfully!", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 2000,
+        });
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+      } catch (error) {
+        console.log(error);
+        if (error.response && error.response.status === 400) {
+          const { data } = error.response;
+          console.log("errors : ", data);
+
+          const p = data.errors;
+          for (let i = 0; i < p.length; i++) {
+            if (p[i] == "Invalid name") {
+              setNameValid(false);
+            } else if (p[i] == "Invalid section") {
+              setsecValid(false);
+            } else if (p[i] == "Invalid phone number") {
+              setPhoneValid(false);
+            } else if (p[i] == "Invalid email") {
+              setEmailValid(false);
+            } else if (p[i] == "Invalid roll number") {
+              setUsernameValid(false);
+            }
+          }
+        } else {
+          alert("Failed to edit-profile. Please try again.");
         }
-      }else{
-        alert("Failed to edit-profile. Please try again.");
       }
     }
   };

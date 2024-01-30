@@ -97,7 +97,6 @@ const Tchr_dashboard = () => {
 
   const [suggestion_visible, setsuggestion_visible] = useState(false);
 
-
   const open_suggestion = (item) => {
     setSelectedStudent(item);
     setsuggestion_visible(!suggestion_visible);
@@ -144,7 +143,6 @@ const Tchr_dashboard = () => {
     setsuggestion(e.target.value);
   };
 
-
   const submitSuggestion = async () => {
     try {
       const response = await axios.post(
@@ -152,12 +150,12 @@ const Tchr_dashboard = () => {
         {
           name: selectedStudent.name,
           suggestion: suggestion,
-          id:selectedStudent._id
+          id: selectedStudent._id,
         }
       );
-  
+
       // Handle the response if needed
-  
+
       // Close the suggestion modal
       setsuggestion_visible(false);
     } catch (error) {
@@ -167,7 +165,10 @@ const Tchr_dashboard = () => {
 
   return (
     <div>
-      <h1 className="td">Teacher Dashboard</h1>
+      <nav className="lgn-nav td-nav">
+        <h1 className="td">Teacher Dashboard</h1>
+        <Link to="/teacher-login" className="td-item">Logout</Link>
+      </nav>
       <div className="all-students">
         {students.map((item) => (
           <li className="student-details" key={item.id}>
@@ -175,7 +176,7 @@ const Tchr_dashboard = () => {
             <div>{item.rollno}</div>
             <div>{item.phoneno}</div>
             <button onClick={() => open_condition(item.name)}>Condition</button>
-            <button onClick={()=>open_suggestion(item)}>Suggetion</button>
+            <button onClick={() => open_suggestion(item)}>Suggetion</button>
           </li>
         ))}
       </div>

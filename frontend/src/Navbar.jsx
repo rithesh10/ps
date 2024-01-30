@@ -110,7 +110,7 @@ const Navbar = () => {
 
       {/* Menu Modal */}
 
-      <Modal //// MENU ////
+      {/* <Modal //// MENU ////
         isOpen={menu_visible}
         onRequestClose={() => setmenu_Visible(false)}
         style={{
@@ -124,8 +124,8 @@ const Navbar = () => {
           },
         }}
       >
-          <Sidebar visible={menu_visible}/>
-      </Modal>
+    </Modal> */}
+    <Sidebar visible={menu_visible} onRequestClose={openmenu}/>
 
 
       {/* Student Details */}

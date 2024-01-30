@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import Nav from "./Nav";
 import axios from "axios";
-import {ToastContainer,toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
@@ -25,12 +25,12 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // setNameValid(true);
-    // setsecValid(true);
-    // setEmailValid(true);
-    // setPasswordValid(true);
-    // setPhoneValid(true);
-    // setUsernameValid(true);
+    setNameValid(true);
+    setsecValid(true);
+    setEmailValid(true);
+    setPasswordValid(true);
+    setPhoneValid(true);
+    setUsernameValid(true);
 
     if (
       formdata.name.length <= 0 ||
@@ -56,39 +56,53 @@ const Signup = () => {
       );
 
       // alert("Form submitted successfully!");
-      toast.success('Registration successful!', {
+      toast.success("Registration successful!", {
         position: toast.POSITION.TOP_CENTER,
-        autoClose:1000,
+        autoClose: 1000,
       });
 
       setFormData({
-        name: '',
-        section: '',
-        phoneno: '',
-        email: '',
-        rollno: '',
-        password: ''
+        name: "",
+        section: "",
+        phoneno: "",
+        email: "",
+        rollno: "",
+        password: "",
       });
+      
       console.log(response.data);
     } catch (error) {
       if (error.response && error.response.status === 400) {
         const { data } = error.response;
         console.log(data);
+        if (data.message) {
+          alert(data.message);
+          setFormData({
+            name: "",
+            section: "",
+            phoneno: "",
+            email: "",
+            rollno: "",
+            password: "",
+          });
+        }
 
         const p = data.errors;
-        for (let i = 0; i < p.length; i++) {
-          if (p[i] == "Invalid name") {
-            setNameValid(false);
-          } else if (p[i] == "Invalid section") {
-            setsecValid(false);
-          } else if (p[i] == "Invalid phone number") {
-            setPhoneValid(false);
-          } else if (p[i] == "Invalid email") {
-            setEmailValid(false);
-          } else if (p[i] == "Invalid roll number") {
-            setUsernameValid(false);
-          } else if (p[i] == "Invalid password") {
-            setPasswordValid(false);
+        if (p) {
+          for (let i = 0; i < p.length; i++) {
+            if (p[i] == "Invalid name") {
+              setNameValid(false);
+            } else if (p[i] == "Invalid section") {
+              setsecValid(false);
+            } else if (p[i] == "Invalid phone number") {
+              setPhoneValid(false);
+            } else if (p[i] == "Invalid email") {
+              setEmailValid(false);
+            } else if (p[i] == "Invalid roll number") {
+              setUsernameValid(false);
+            } else if (p[i] == "Invalid password") {
+              setPasswordValid(false);
+            }
           }
         }
       } else {

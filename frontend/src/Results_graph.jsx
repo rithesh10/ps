@@ -38,87 +38,38 @@ const Results_graph = () => {
         const newAnxietyList = useroptions.map((item) => item.Anxiety);
         const newStressList = useroptions.map((item) => item.Stress);
 
-        setdepression(newDepressionList);
-        setanxiety(newAnxietyList);
-        setstress(newStressList);
+          setdepression(newDepressionList);
+          setanxiety(newAnxietyList);
+          setstress(newStressList);
+        
 
         setdp(useroptions[useroptions.length - 1]["Depression"]);
         setav(useroptions[useroptions.length - 1]["Anxiety"]);
         setsv(useroptions[useroptions.length - 1]["Stress"]);
-
-        // console.log("depressionValue",depressionValue);
-        // console.log("anxietyValue",anxietyValue);
-        // console.log("stressValue",stressValue);
-
-        // console.log("Depression List:", newDepressionList);
-        // console.log("Anxiety List:", newAnxietyList);
-        // console.log("Stress List:", newStressList);
-        // console.log("ddd",depression);
-        // console.log("ddd",stress);
-        // console.log("ddd",anxiety);
       } catch (error) {
         console.log("Error in useEffect:", error);
       }
     };
 
     fetchData();
-
-    // const lineChartCtx = document.getElementById("lineChart").getContext("2d");
-
-    // const lineChartData = {
-    //   labels: [1,2,3,4,5,6,7,8,9,10],
-    //   datasets: [
-    //     {
-    //       label: "depression",
-    //       data: depression,
-    //       borderColor: "red", // Customize the color if needed
-    //       borderWidth: 2,
-    //       fill: false,
-    //     },
-    //     {
-    //       label: "anxiety",
-    //       data: anxiety,
-    //       borderColor: "blue", // Customize the color if needed
-    //       borderWidth: 2,
-    //       fill: false,
-    //     },
-    //     {
-    //       label: "stress",
-    //       data: stress,
-    //       borderColor: "orange", // Customize the color if needed
-    //       borderWidth: 2,
-    //       fill: false,
-    //     },
-    //   ],
-    // };
-
-    // const options = {
-    //   scales: {
-    //     y: {
-    //       beginAtZero: true,
-    //     },
-    //   },
-    // };
-
-    // let lineChart = new Chart(lineChartCtx, {
-    //   type: "line",
-    //   data: lineChartData,
-    //   options: options,
-    // });
-
-    // // Clean up the chart when the component is unmounted
-    // return () => {
-    //   lineChart.destroy();
-    // };
-
-    // console.log(newDepressionList);
   }, []);
 
   const updateChart = () => {
     const lineChartCtx = document.getElementById("lineChart").getContext("2d");
+    const label=[]
+    if(depression.length>10){
+      for (let i = 0; i < depression.length; i++) {
+        label[i]=i+1
+      }
+    }
+    else{
+      for (let i = 0; i < 10; i++) {
+        label[i]=i+1
+      }
+    }
 
     const lineChartData = {
-      labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      labels: label,
       datasets: [
         {
           label: "depression",
@@ -127,7 +78,7 @@ const Results_graph = () => {
 
           borderWidth: 3,
 
-          fill: false
+          fill: false,
         },
         {
           label: "anxiety",
@@ -154,43 +105,24 @@ const Results_graph = () => {
       plugins: {
         subtitle: {
           display: true,
-          text: 'Progress Graph',
-          color: 'black', // Corrected property name
+          text: "Progress Graph",
+          color: "black", // Corrected property name
           font: {
-            size: 20
-          }
-        }
+            size: 20,
+          },
+        },
       },
-    //   animations: {
-    //     tension: {
-    //         duration: 1200,
-    //         // easing: 'linear',
-    //         easing:'easeIn',
-    //         from: 1,
-    //         to: 0,
-    //         loop: true
-    //     }
-    // },
       scales: {
         x: {
-
-          // ticks:{
-          //   // color:'#000000'
-          // },
-          grid:{
-            color:''
-          }
+          grid: {
+            color: "",
+          },
         },
         y: {
-        //   ticks:{
-        //     // color:'#000000'
-        //   },
-
-          grid:{
-            color:'rgb(66, 65, 65)'
-          }
-        }
-        
+          grid: {
+            color: "rgb(66, 65, 65)",
+          },
+        },
       },
     };
 
@@ -211,8 +143,6 @@ const Results_graph = () => {
   useEffect(() => {
     updateChart();
   }, [depression, anxiety, stress]);
-
-
 
   const fetchResult = async () => {
     try {
@@ -261,135 +191,6 @@ const Results_graph = () => {
       setError(error.message || "An error occurred while fetching user data.");
     }
   };
-  // useEffect(() => {
-  //     // Your fetch code here to get the user data
-  //     const fetchResult = async () => {
-  //       try {
-  //         const response = await axios.get('http://localhost:2000/api/result/all-result');
-  //         setResult(response.data);
-  //         q=response.data;
-  //         // console.log(setResult)
-  //         console.log(response.data)
-
-  //         return q;
-  //       } catch (error) {
-  //         console.error('Error fetching user result:', error);
-  //       }
-  //     };
-
-  //     const fetchStudent = async () => {
-  //         try {
-  //             const accessToken = localStorage.getItem("accessToken");
-  //           console.log("Token : ", accessToken);
-  //           if (!accessToken) {
-  //             setError("Access token not found"); // Handle missing token
-  //             return;
-  //         }
-  //         const response = await axios.get(
-  //             "http://localhost:2000/api/users/student-profile",
-  //             {
-  //                 headers: {
-  //                     Authorization: `Bearer ${accessToken}`,
-  //                     "Content-Type": "application/json",
-  //                 },
-  //             }
-  //             );
-  //             if (response && response.data) {
-  //                 p = response.data;
-  //                 setuserdata({
-  //                     name: response.data.name,
-  //                     rollno: response.data.rollno,
-  //                     phoneno: response.data.phoneno,
-  //                     section: response.data.section,
-  //                     email: response.data.email,
-  //                     password: response.data.password,
-  //                 });
-  //                 console.log(response.data);
-
-  //             }
-  //         return p;
-  //         } catch (error) {
-  //             console.log(error);
-  //             setError(
-  //                 error.message || "An error occurred while fetching user data."
-  //                 );
-  //             }
-  //         };
-  //     const userresult = async ()=>{
-  //         const user= await fetchStudent();
-  //         const result= await fetchResult();
-  //         let userid = user.id
-  //         console.log(userid);
-  //         const resultOfUser = result.find(item => item.user === userid);
-  //         console.log("resultofuser=",resultOfUser);
-  //         const useroptions=resultOfUser.options
-  //         console.log(useroptions)
-
-  //         const newDepressionList = useroptions.map(item => item.Depression);
-  //         const newAnxietyList = useroptions.map(item => item.Anxiety);
-  //         const newStressList = useroptions.map(item => item.Stress);
-
-  //         setdepression(newDepressionList);
-  //         setanxiety(newAnxietyList);
-  //         setstress(newStressList);
-
-  //         console.log('Depression List:', depression);
-  //         console.log('Anxiety List:', anxiety);
-  //         console.log('Stress List:', stress);
-
-  //         const lineChartCtx = document.getElementById('lineChart').getContext('2d');
-
-  //   const lineChartData = {
-  //     labels: ["week1","week2","week3","week4"],
-  //     datasets: [
-  //       {
-  //         label: 'depression',
-  //         data: depression,
-  //         borderColor: 'red', // Customize the color if needed
-  //         borderWidth: 2,
-  //         fill: false,
-  //       },
-  //       {
-  //         label: 'anxiety',
-  //         data: anxiety,
-  //         borderColor: 'blue', // Customize the color if needed
-  //         borderWidth: 2,
-  //         fill: false,
-  //       },
-  //       {
-  //         label: 'stress',
-  //         data: stress,
-  //         borderColor: 'orange', // Customize the color if needed
-  //         borderWidth: 2,
-  //         fill: false,
-  //       },
-
-  //     ],
-  //   };
-
-  //   const options = {
-  //     scales: {
-  //       y: {
-  //         beginAtZero: true,
-  //       },
-  //     },
-  //   };
-
-  //   let lineChart = new Chart(lineChartCtx, {
-  //     type: 'line',
-  //     data: lineChartData,
-  //     options: options,
-  //   });
-
-  //   // Clean up the chart when the component is unmounted
-  //   return () => {
-  //     lineChart.destroy();
-  //   };
-
-  //     }
-  //     userresult();
-
-  //   }, []);
 
   return (
     <div className="Results_graph graph">

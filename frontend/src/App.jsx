@@ -4,13 +4,15 @@ import { Routes, Route, useLocation, Router } from "react-router-dom";
 import "./App.css";
 import "./Login-registration/Log_Reg.css";
 
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Results_graph from "./Results_graph";
 import Activity from "./Activity";
 import Dashboad from "./Dashboad";
 import GoogleCalendar from "./GoogleCalendar";
-
 import Nav from "./Login-registration/Nav.jsx";
 import Bodys from "./Login-registration/Bodys.jsx";
 import Login from "./Login-registration/Login.jsx";
@@ -19,14 +21,13 @@ import Signup from "./Login-registration/Signup.jsx";
 import Asnmt_page from "./Asnmt_page.jsx";
 import Forgetpassword from "./Forgetpassword.jsx";
 import Box from "./Box.jsx"
-
-
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Results from "./Results.jsx";
 import ResultsHistory from "./ResultsHistory.jsx";
 import Tchr_dashboard from "./Tchr_dashboard.jsx"
 import Edit_profile from "./Edit_profile.jsx";
+import Working from "./Working.jsx";
+import Meditation from "./Meditation.jsx";
+import Yoga from "./Yoga.jsx";
 
 
 const App = () => {
@@ -42,10 +43,14 @@ const App = () => {
         <Route path="/dashboard" element={<Dashboad />} />
         <Route path="/dashboard/calendar" element={<GoogleCalendar />} />
         <Route path="/Pasword-reset" element={<Forgetpassword />} />
+        <Route path="/dashboard/meditation" element={<Meditation/>} />
+        <Route path="/dashboard/yoga" element={<Yoga/>} />
+
         <Route path="/tchr_dashboard" element={<Tchr_dashboard/>}/>
         <Route path="/dashboard/assessment/result" element={<Results/>} />
         <Route path="/dashboard/result-history" element={<ResultsHistory/>} />
         <Route path="/dashboard/profile" element={<Edit_profile/>} />
+        <Route path="/working" element={<Working/>} />
       </Routes>
       <ToastContainer/>
     </div>

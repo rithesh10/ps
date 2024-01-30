@@ -17,10 +17,10 @@ const Contactmodal = () => {
           <div className="emailinfo info">BY MAIL </div>
           <div className="email"><a href="mailto:22bd1a0565@gmail.com?subject=MANAS HEALTH &body=">22bd1a0565@gmail.com</a></div>
         </div>
-        <div className="contactchatbot">
+        {/* <div className="contactchatbot">
         <div className="chatbotimage"><TbMessageChatbot style={{fontSize:"100px", color:"rgb(53, 167, 219)"}}/></div>
            <div className="chatbotinfo info">CHAT WITH US</div>
-        </div>
+        </div> */}
       </div>
     </div>
   )
