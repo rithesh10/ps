@@ -166,13 +166,8 @@ const Login = ({ name }) => {
               },
             }}
           >
-<<<<<<< HEAD
             <Forgetpassword className="modal-FP"/>
           </Modal>
-=======
-            <Forgetpassword visible={FP}/>
-          </Modal>  */}
->>>>>>> a460dddd2cab92b0f8ebc97891bd60d74707316f
 
           <p className="error">{p}</p>
           <button type="submit" className="lg-btn">
@@ -190,16 +185,6 @@ const Login = ({ name }) => {
             ""
             )}
         </form>
-
-        {/* {name == "Student" ? (
-          <div className="lgn-btns">
-            <Link to="/teacher-login">Teacher Login</Link>
-          </div>
-        ) : (
-          <div className="lgn-btns">
-            <Link to="/student-login">Student Login</Link>
-          </div>
-        )} */}
       </div>
     </>
   );
