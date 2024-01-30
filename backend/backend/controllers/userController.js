@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const asyncHandler = require("express-async-handler");
 const User = require("../model/userModel");
 const Result = require( "../model/resultModel");
+const nodemailer = require('nodemailer')
 
 
 const nameV = (name) => {
@@ -304,21 +305,105 @@ const forgotpassword = async (req, res) => {
         .status(400)
         .json("User not found. Email doesnot exist in database");
     }
-    const token = generateToken(
-      user._id,
-      user.name,
-      user.section,
-      user.phoneno,
-      user.rollno,
-      user.password,
-      user.email
-    );
-    res.status(200).json(token);
-    const link = `http://localhost:2000/api/users/reset-password/${user._id}/${token}`;
+    else{
+
+      const token = generateToken(
+        user._id,
+        user.name,
+        user.section,
+        user.phoneno,
+        user.rollno,
+        user.password,
+        user.email
+        );
+        var transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: 'saimadhav9235@gmail.com',
+            pass: 'ajqn wbcp zhwx didw'
+          }
+        });
+        
+        var mailOptions = {
+          from: 'saimadhav9235@gmail.com',
+          to: user.email,
+          subject: 'Reset your password',
+          text: `http://localhost:5173/reset-password/${user._id}/${token}`
+        };
+        res.status(200).json(mailOptions);
+        
+        // console.log("mailoptions",mailOptions);
+        // console.log("transporter",transporter);
+        
+        transporter.sendMail(mailOptions, function(error, info){
+          if (error) {
+            console.log('Email sending error:', error);
+            return res.status(500).json({ error: 'Failed to send email' });
+          } else {
+            // console.log('Email sent: ' + mailOptions.text);
+            return res.status(200).json({ status: 'Success' });
+          }
+        });
+      }
+        
   } catch (error) {
     res.status(400).json(error);
   }
 };
+
+const resetpassword = async (req, res) => {
+  const { id, token } = req.params;
+  const { password } = req.body;
+  if(passV(password)){
+
+    try {
+      if (token) {
+        // Verify the token (You need to implement this part based on your token verification logic)
+        const isTokenValid = verifyToken(token, id);
+  
+        if (isTokenValid) {
+          const salt = await bcrypt.genSalt(10);
+          const newPassword = await bcrypt.hash(password, salt);
+  
+          // Find the user by id and update the password
+          const user = await User.findByIdAndUpdate(id, { password: newPassword });
+  
+          if (!user) {
+            return res.status(404).json({ message: "User not found" });
+          }
+  
+          return res.status(200).json({ message: "Password reset successfully" });
+        } else {
+          return res.status(400).json({ message: "Token is not valid for the given user" });
+        }
+      } else {
+        return res.status(400).json({ message: "Token is required for password reset" });
+      }
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ message: "Internal Server Error" });
+    }
+  }
+  else{
+    res.status(400).json({message:"Invalid password"})
+  }
+};
+
+// Example token verification function (You need to implement your own logic)
+const verifyToken = (token, id) => {
+  try {
+    // Verify the token using your secret key or other verification mechanism
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    // Check if the decoded user id matches the provided id
+    return decoded.id === id;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+};
+
+
 
 module.exports = {
   registerUser,
@@ -328,4 +413,5 @@ module.exports = {
   changePassword,
   edit_profile,
   forgotpassword,
+  resetpassword,
 };

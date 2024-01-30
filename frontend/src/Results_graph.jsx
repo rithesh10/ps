@@ -68,6 +68,11 @@ const Results_graph = () => {
       }
     }
 
+    const label=[]
+    for (let i = 0; i < depression.length; i++) {
+      label[i]=i+1
+      
+    }
     const lineChartData = {
       labels: label,
       datasets: [

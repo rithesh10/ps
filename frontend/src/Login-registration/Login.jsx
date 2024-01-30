@@ -147,13 +147,13 @@ const Login = ({ name }) => {
             }
             required
             />
-          <a className="forget" onClick={openFP}>
+          <Link to="/Password-reset" className="forget" onClick={openFP} >
             Forget Password ?
-          </a>
+          </Link>
 
           <Modal
             isOpen={FP}
-            onRequestClose={() => setFP(false)}
+            // onRequestClose={() => setFP(false)}
             style={{
               content: {
                 width: "fit-content",
@@ -166,8 +166,13 @@ const Login = ({ name }) => {
               },
             }}
           >
+<<<<<<< HEAD
             <Forgetpassword className="modal-FP"/>
           </Modal>
+=======
+            <Forgetpassword visible={FP}/>
+          </Modal>  */}
+>>>>>>> a460dddd2cab92b0f8ebc97891bd60d74707316f
 
           <p className="error">{p}</p>
           <button type="submit" className="lg-btn">
