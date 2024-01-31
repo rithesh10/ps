@@ -1,7 +1,8 @@
 body {
   margin: 0;
   background-color: rgb(243, 247, 251);
-  font-family: "Pacifico", cursive;
+  /* font-family: "Pacifico", cursive; */
+  font-family: 'Ubuntu', sans-serif;
   /* font-family: 'Ubuntu', sans-serif; */
 }
 a {
@@ -133,6 +134,7 @@ a {
   flex-direction: row;
   grid-column-start: 1;
   grid-column-end: 4;
+  position: fixed;
 }
 
 .bodyleft {
@@ -146,8 +148,8 @@ a {
   align-items: center;
   width: 60%;
   height: 668px;
-  transform: translateX(-100%);
-  transition: all 0.5s ease;
+  /* transform: translateX(-100%);
+  transition: all 0.5s ease; */
 }
 .open-bl{
   transform: translateX(0%);
@@ -177,8 +179,8 @@ a {
   justify-content: center;
   align-items: center;
   text-align: center;
-  transform: translateX(100%);
-  transition: all 0.5s ease;
+  /* transform: translateX(100%);
+  transition: all 0.5s ease; */
 }
 .open-br{
   transform: translateX(0%);

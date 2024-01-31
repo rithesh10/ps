@@ -629,6 +629,10 @@
   border-radius: 5px;
 }
 
+.none{
+  display: none;
+}
+
 /* Asnmt_page.jsx css */
 
 .questions {
@@ -870,18 +874,24 @@ button:hover {
 .twitter,
 .instagram {
   margin-right: 10px;
-  text-decoration: none;
+  /* text-decoration: none; */
   color: #333;
 }
 
-.facebook:hover {
+.facebook :hover {
   color: #007bff;
+  background-color: white;
+  border-radius: 5px;
 }
-.twitter:hover {
-  color: black;
+.twitter :hover{
+  background-color: black;
+  border-radius: 5px;
 }
-.instagram:hover {
-  color: rgb(194, 15, 15);
+.instagram :hover { 
+  background: linear-gradient(45deg, #bc4666, #f2153a);
+  border-radius: 7px;
+  /* padding: 1px; */
+  /* color: rgb(194, 15, 15); */
 }
 
 .terms-privacy a {
@@ -1154,8 +1164,14 @@ button:hover {
   grid-column-end: 5;
   animation: slide-right 1s ease;
 }
-
+.yoga-asanas h1{
+  background-color: plum;
+  margin: 0;
+  padding: 20px 0px;
+}
 .all-asanas {
+  padding-top: 30px;
+  background-color:rgb(246, 223, 246);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -1167,9 +1183,125 @@ button:hover {
   border: 2px solid black;
   border-radius: 20px;
   width: 350px;
-  height: 200px;
+  height: 400px;
   padding: 20px;
   margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Garudasana{
+  background-image: url("./Images/garudasana.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 350px;
+  height: 200px;
+  align-self: center;
+  border-radius: 10px;
+}
+.Natarajasana{
+  background-image: url("./Images/Natarajasana.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 200px;
+  align-self: center;
+  border-radius: 10px;
+}
+.Vriksasana{
+  background-image: url("./Images/Vriksasana.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 350px;
+  height: 200px;
+  align-self: center;
+  border-radius: 10px;
+}
+.Padmasana{
+  background-image: url("./Images/Padmasana.jpeg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 350px;
+  height: 200px;
+  align-self: center;
+  border-radius: 10px;
+}
+.Virabhadrasana{
+  background-image: url("./Images/Virabhadrasana.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 350px;
+  height: 200px;
+  align-self: center;
+  border-radius: 10px;
+}
+.Savasana{
+  background-image: url("./Images/Savasana.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 350px;
+  height: 200px;
+  align-self: center;
+  border-radius: 10px;
+}
+.Vajrasana{
+  background-image: url("./Images/Vajrasana.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 350px;
+  height: 230px;
+  align-self: center;
+  border-radius: 10px;
+}
+.Chakrasana{
+  background-image: url("./Images/Chakrasana.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 350px;
+  height: 200px;
+  align-self: center;
+  border-radius: 10px;
+}
+
+
+/* About us */
+.about-us{
+  grid-row-start: 1;
+  grid-column-start: 1;
+  grid-row-end: 4;
+  grid-column-end: 6;
+}
+.about-us h1{
+  text-align: center;
+  padding: 10px;
+}
+.about-us h4{
+  width: 70vw;
+  align-self: center;
+  text-align: center;
+  margin: auto;
+  padding: 30px;
+  font-size: 20px;
+}
+
+.about-us p{
+  width: 85vw;
+  align-self: center;
+  text-align: center;
+  margin: auto;
+  padding: 30px;
+  font-size: 1rem;
+  line-height: 30px;
+}
+.about-img{
+  background-image: url("./Images/about_us.jpeg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 500px;
+  height: 440px;
+  margin: auto;
 }
 
 /*    MEDIA QUERIES    */
@@ -1352,6 +1484,18 @@ button:hover {
     height: 33px;
     font-family: 13px;
   }
+
+  .footer-content{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0px;
+  }
+  .social-media,.copy-right,.terms-privacy,.contact{
+    padding: 5px;
+  }
+
 }
 
 /* For tablets */

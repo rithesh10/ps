@@ -117,6 +117,12 @@ const Sidebar = ({visible}) => {
   const [suggestion_visible,setsuggestion_visible]=useState(false)
 
 
+  const logout=()=>{
+    // localStorage.removeItem('accessToken');
+    // localStorage.clear();
+    // alert("clicked logout button")
+
+  }
   return (
     <div className={`Sidebar ${visible ? "side-modal" : ""}`}>
       <h1>Manas Health</h1>
@@ -188,7 +194,7 @@ const Sidebar = ({visible}) => {
         }}>
           <Contactmodal/>
         </Modal>
-        <Link to="/student-login"><li><CiLogout style={{fontSize:"17px",margin:"0px 5px -4px -3px"}}/>Logout</li></Link>
+        <Link to="/student-login" onClick={logout()}><li><CiLogout style={{fontSize:"17px",margin:"0px 5px -4px -3px"}}/>Logout</li></Link>
       </ul>
     </div>
   );

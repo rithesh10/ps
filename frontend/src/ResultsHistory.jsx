@@ -128,10 +128,13 @@ const ResultsHistory = () => {
     latest(totalWeeks);
   }, []);
 
+  const[resultvisible,setresultvisible]=useState(false)
+
   const handleWeekChange = (selectedWeek) => {
     console.log("total:", totalWeeks);
     console.log("week:", selectedWeek);
     latest(selectedWeek);
+    setresultvisible(true)
   };
 
   const latest = (selectedWeek) => {
@@ -161,13 +164,16 @@ const ResultsHistory = () => {
       <Navbar />
       <div className="BodyBox">
         <div className="mainBox">
-          <div className="Depression">
+          <div className={`${resultvisible ? "none" : "Depression"}`}>
+            Please select the Attempt for result.......
+          </div>
+          <div className={`${resultvisible ? "Depression" : "none"}`}>
             Depression is recorded as {dep} on {date}
           </div>
-          <div className="Stress">
+          <div className={`${resultvisible ? "Stress" : "none"}`}>
             Stress is recorded as {str} on {date}
           </div>
-          <div className="Anxiety">
+          <div className={`${resultvisible ? "Anxiety" : "none"}`}>
             Anxiety is recorded as {anx} on {date}
           </div>
           <select

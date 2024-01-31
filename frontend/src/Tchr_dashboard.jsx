@@ -6,6 +6,9 @@ import Results_graph from "./Results_graph";
 
 import { IoClose } from "react-icons/io5";
 
+import {ToastContainer,toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Tchr_dashboard = () => {
   const condition = [
     "normal",
@@ -155,9 +158,13 @@ const Tchr_dashboard = () => {
       );
 
       // Handle the response if needed
-
-      // Close the suggestion modal
       setsuggestion_visible(false);
+      setsuggestion("");
+      toast.success('Submitted successfully!', {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose:1000,
+      });
+      // Close the suggestion modal
     } catch (error) {
       console.error("Error submitting suggestion:", error);
     }
@@ -185,8 +192,8 @@ const Tchr_dashboard = () => {
         onRequestClose={() => setstu_condition(false)}
         style={{
           content: {
-            // width: "50vw",
-            width: "500px",
+            width: "400px",
+            fontSize:"23px",
             height: "fit-content",
             overflow: "hidden",
             display: "flex",

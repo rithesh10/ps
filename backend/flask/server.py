@@ -13,7 +13,7 @@ app.secret_key = 'your_secret_key'
 options = {"q1": None, "q2": None, "q3": None,"q4": None,"q5": None,"q6": None,"q7": None,"q8": None,"q9": None,"q10": None,"q11": None,"q12": None,"q13": None,"q14": None,"q15": None,"q16": None,"q17": None,"q18": None,"q19": None,"q20": None,"q21": None}
 userdetails={"name":None,"rollno":None,"phonono":None,"id":None}
 values=[]
-numbs={0:'Normal',1:'Severe',2:'Mild',3:'Moderate',4:'Extremely Severe'} 
+numbs={0:'Normal',1:'Mild',2:'Moderate',3:'Severe',4:'Extremely Severe'} 
 #final_predict = [[0, 0, 0]]
 
 
@@ -35,28 +35,52 @@ def questions():
         data = request.json
         # options["q3"] = data['selectedoptionselectedoption3']
         print("User details from Frontend:",data)
-        
-        options["q1"] = data['selectedOptions']['selectedoptionselectedoption1']
-        options["q2"] = data['selectedOptions']['selectedoptionselectedoption2']
-        options["q3"] = data['selectedOptions']['selectedoptionselectedoption3']
-        options["q4"] = data['selectedOptions']['selectedoptionselectedoption4']
-        options["q5"] = data['selectedOptions']['selectedoptionselectedoption5']
-        options["q6"] = data['selectedOptions']['selectedoptionselectedoption6']
-        options["q7"] = data['selectedOptions']['selectedoptionselectedoption7']
-        options["q8"] = data['selectedOptions']['selectedoptionselectedoption8']
-        options["q9"] = data['selectedOptions']['selectedoptionselectedoption9']
-        options["q10"] = data['selectedOptions']['selectedoptionselectedoption10']
-        options["q11"] = data['selectedOptions']['selectedoptionselectedoption11']
-        options["q12"] = data['selectedOptions']['selectedoptionselectedoption12']
-        options["q13"] = data['selectedOptions']['selectedoptionselectedoption13']
-        options["q14"] = data['selectedOptions']['selectedoptionselectedoption14']
-        options["q15"] = data['selectedOptions']['selectedoptionselectedoption15']
-        options["q16"] = data['selectedOptions']['selectedoptionselectedoption16']
-        options["q17"] = data['selectedOptions']['selectedoptionselectedoption17']
-        options["q18"] = data['selectedOptions']['selectedoptionselectedoption18']
-        options["q19"] = data['selectedOptions']['selectedoptionselectedoption19']
-        options["q20"] = data['selectedOptions']['selectedoptionselectedoption20']
-        options["q21"] = data['selectedOptions']['selectedoptionselectedoption21']
+
+
+        options["q1"] = data['selectedOptions']['selectedoptionselectedoption15']
+        options["q2"] = data['selectedOptions']['selectedoptionselectedoption8']
+        options["q3"] = data['selectedOptions']['selectedoptionselectedoption1']
+        options["q4"] = data['selectedOptions']['selectedoptionselectedoption9']
+        options["q5"] = data['selectedOptions']['selectedoptionselectedoption2']
+        options["q6"] = data['selectedOptions']['selectedoptionselectedoption16']
+        options["q7"] = data['selectedOptions']['selectedoptionselectedoption10']
+        options["q8"] = data['selectedOptions']['selectedoptionselectedoption17']
+        options["q9"] = data['selectedOptions']['selectedoptionselectedoption11']
+        options["q10"] = data['selectedOptions']['selectedoptionselectedoption3']
+        options["q11"] = data['selectedOptions']['selectedoptionselectedoption18']
+        options["q12"] = data['selectedOptions']['selectedoptionselectedoption19']
+        options["q13"] = data['selectedOptions']['selectedoptionselectedoption4']
+        options["q14"] = data['selectedOptions']['selectedoptionselectedoption20']
+        options["q15"] = data['selectedOptions']['selectedoptionselectedoption12']
+        options["q16"] = data['selectedOptions']['selectedoptionselectedoption5']
+        options["q17"] = data['selectedOptions']['selectedoptionselectedoption6']
+        options["q18"] = data['selectedOptions']['selectedoptionselectedoption21']
+        options["q19"] = data['selectedOptions']['selectedoptionselectedoption13']
+        options["q20"] = data['selectedOptions']['selectedoptionselectedoption14']
+        options["q21"] = data['selectedOptions']['selectedoptionselectedoption7']
+
+
+        # options["q1"] = data['selectedOptions']['selectedoptionselectedoption1']
+        # options["q2"] = data['selectedOptions']['selectedoptionselectedoption2']
+        # options["q3"] = data['selectedOptions']['selectedoptionselectedoption3']
+        # options["q4"] = data['selectedOptions']['selectedoptionselectedoption4']
+        # options["q5"] = data['selectedOptions']['selectedoptionselectedoption5']
+        # options["q6"] = data['selectedOptions']['selectedoptionselectedoption6']
+        # options["q7"] = data['selectedOptions']['selectedoptionselectedoption7']
+        # options["q8"] = data['selectedOptions']['selectedoptionselectedoption8']
+        # options["q9"] = data['selectedOptions']['selectedoptionselectedoption9']
+        # options["q10"] = data['selectedOptions']['selectedoptionselectedoption10']
+        # options["q11"] = data['selectedOptions']['selectedoptionselectedoption11']
+        # options["q12"] = data['selectedOptions']['selectedoptionselectedoption12']
+        # options["q13"] = data['selectedOptions']['selectedoptionselectedoption13']
+        # options["q14"] = data['selectedOptions']['selectedoptionselectedoption14']
+        # options["q15"] = data['selectedOptions']['selectedoptionselectedoption15']
+        # options["q16"] = data['selectedOptions']['selectedoptionselectedoption16']
+        # options["q17"] = data['selectedOptions']['selectedoptionselectedoption17']
+        # options["q18"] = data['selectedOptions']['selectedoptionselectedoption18']
+        # options["q19"] = data['selectedOptions']['selectedoptionselectedoption19']
+        # options["q20"] = data['selectedOptions']['selectedoptionselectedoption20']
+        # options["q21"] = data['selectedOptions']['selectedoptionselectedoption21']
         
         userdetails["name"]=data['userdata']['name']
         userdetails["rollno"]=data['userdata']['rollno']

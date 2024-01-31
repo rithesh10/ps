@@ -25,9 +25,9 @@ const Nav = () => {
           <Link to="/">
             <li><IoMdHome style={{fontSize:"25px",margin:"0px 3px -5px 0px" }}/>Home</li>
           </Link>
-          <a href="https://www.medicalnewstoday.com/articles/154543" target="_blank">
+          <Link to="./aboutus">
             <li><CiCircleMore style={{fontSize:"25px",margin:"0px 3px -5px 0px" }}/>About us</li>
-          </a>
+          </Link>
           <a href="mailto:22bd1a0565@gmail.com?subject=MANAS HEALTH &body=">
             <li><IoIosContact style={{fontSize:"25px",margin:"0px 3px -5px 0px" }}/>Contact us</li>
           </a>
@@ -53,7 +53,7 @@ const Nav = () => {
             <Link to="/">
               <li><IoMdHome style={{fontSize:"25px",margin:"0px 3px -5px 0px" }}/>Home</li>
             </Link>
-            <Link>
+            <Link to="./aboutus">
               <li><CiCircleMore style={{fontSize:"23px",margin:"0px 3px -5px 0px" }}/>About us</li>
             </Link>
             <a href="mailto:22bd1a0565@gmail.com?subject=MANAS HEALTH &body=">

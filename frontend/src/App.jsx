@@ -29,6 +29,7 @@ import Working from "./Working.jsx";
 import Meditation from "./Meditation.jsx";
 import Yoga from "./Yoga.jsx";
 import Password_reset from "./Password_reset.jsx";
+import Aboutus from "./Aboutus.jsx";
 // >>>>>>> a460dddd2cab92b0f8ebc97891bd60d74707316f
 
 
@@ -55,6 +56,7 @@ const App = () => {
         <Route path="/tchr_dashboard" element={<Tchr_dashboard/>}/>
         <Route path="/dashboard/profile" element={<Edit_profile/>} />
         <Route path="/working" element={<Working/>} /> 
+        <Route path="/aboutus" element={<Aboutus/>} /> 
         
       </Routes>
       <ToastContainer/>
