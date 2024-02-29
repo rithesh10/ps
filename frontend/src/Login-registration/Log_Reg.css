@@ -1,8 +1,8 @@
 body {
   margin: 0;
   background-color: rgb(243, 247, 251);
-  /* font-family: "Pacifico", cursive; */
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Pacifico", cursive;
+  /* font-family: "Ubuntu", sans-serif; */
   /* font-family: 'Ubuntu', sans-serif; */
 }
 a {
@@ -91,12 +91,14 @@ a {
   border-radius: 20px;
 }
 
-.nav-item a li:hover ,.td-item:hover{
+.nav-item a li:hover,
+.td-item:hover {
   background-color: rgb(216, 216, 216);
   color: black;
 }
 
-.nav-item a li:active,.td-item:active {
+.nav-item a li:active,
+.td-item:active {
   background-color: rgb(188, 187, 187);
   color: black;
 }
@@ -151,10 +153,10 @@ a {
   /* transform: translateX(-100%);
   transition: all 0.5s ease; */
 }
-.open-bl{
+.open-bl {
   transform: translateX(0%);
 }
-.close-bl{
+.close-bl {
   transform: translateX(-100%);
 }
 .bodyleft h1 {
@@ -182,10 +184,10 @@ a {
   /* transform: translateX(100%);
   transition: all 0.5s ease; */
 }
-.open-br{
+.open-br {
   transform: translateX(0%);
 }
-.close-br{
+.close-br {
   transform: translateX(100%);
 }
 .bodyright h1 {
@@ -194,8 +196,7 @@ a {
   margin: 0;
 }
 
-
-.bodyright p{
+.bodyright p {
   width: 80%;
   margin: 0px auto 20px auto;
 }
