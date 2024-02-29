@@ -24,7 +24,7 @@
 
 .Sidebar h2 {
   font-weight: 500;
-  margin: 15px 0px 5px 0px;
+  margin: 15px 0px 5px 10px;
 }
 
 .Sidebar ul {
@@ -35,7 +35,7 @@
 
 .Sidebar li {
   /* margin: 5px 0px; */
-  padding: 8px 20px;
+  padding: 8px 30px;
   border-radius: 15px;
   cursor: pointer;
   transition: 0.3s ease;
@@ -43,7 +43,7 @@
 }
 .Sidebar li:hover {
   background-color: #54abd3;
-  padding-left: 25px;
+  padding-left: 35px;
 }
 
 .Sidebar a {
