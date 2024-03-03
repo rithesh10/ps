@@ -105,7 +105,7 @@ const Results = () => {
   };
   return (
     <div className="result-img">
-      <div className="result">
+      <div className="result final">
         <h3>You have {condition[depressionValue]} Depression</h3>
         <h3>You have {condition[anxietyValue]} Anxiety</h3>
         <h3>You have {condition[stressValue]} Stress</h3>

@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import Nav from "./Nav";
 import Modal from "react-modal";
 import axios from "axios";
-import {ToastContainer,toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Forgetpassword from "../Forgetpassword";
 
@@ -43,9 +43,9 @@ const Login = ({ name }) => {
         console.log("login successful");
         console.log("Access Token:", accessToken);
 
-        toast.success('Login successful!', {
+        toast.success("Login successful!", {
           position: toast.POSITION.TOP_CENTER,
-          autoClose:1000,
+          autoClose: 1000,
         });
 
         navigate("/dashboard");
@@ -78,10 +78,10 @@ const Login = ({ name }) => {
       console.log(response.data);
       if (response && response.data) {
         console.log("login successful");
-        
-        toast.success('Login successful!', {
+
+        toast.success("Login successful!", {
           position: toast.POSITION.TOP_CENTER,
-          autoClose:1000,
+          autoClose: 1000,
         });
         navigate("/tchr_dashboard");
 
@@ -99,7 +99,7 @@ const Login = ({ name }) => {
   const [FP, setFP] = useState(false);
 
   const openFP = () => {
-    setFP(true)
+    setFP(true);
   };
 
   return (
@@ -110,7 +110,7 @@ const Login = ({ name }) => {
           id="student"
           className="login-box"
           onSubmit={name == "Student" ? stu_login : tchr_login}
-          >
+        >
           <h2>{name}'s Login</h2>
           <label className="details" htmlFor="S-Username">
             Username
@@ -126,11 +126,12 @@ const Login = ({ name }) => {
             value={name == "Student" ? data.rollno : tchr_data.username}
             onChange={
               name == "Student"
-              ? (e) => setData({ ...data, rollno: e.target.value })
-              : (e) => settchr_data({ ...tchr_data, username: e.target.value })
+                ? (e) => setData({ ...data, rollno: e.target.value })
+                : (e) =>
+                    settchr_data({ ...tchr_data, username: e.target.value })
             }
             required
-            />
+          />
           <label className="details" htmlFor="S-Password">
             Password
           </label>
@@ -142,12 +143,13 @@ const Login = ({ name }) => {
             value={name == "Student" ? data.password : tchr_data.password}
             onChange={
               name == "Student"
-              ? (e) => setData({ ...data, password: e.target.value })
-              : (e) => settchr_data({ ...tchr_data, password: e.target.value })
+                ? (e) => setData({ ...data, password: e.target.value })
+                : (e) =>
+                    settchr_data({ ...tchr_data, password: e.target.value })
             }
             required
-            />
-          <Link to="/Password-reset" className="forget" onClick={openFP} >
+          />
+          <Link to="/Password-reset" className="forget" onClick={openFP}>
             Forget Password ?
           </Link>
 
@@ -162,11 +164,11 @@ const Login = ({ name }) => {
                 top: "30vh",
                 left: "",
                 padding: "0px",
-                border:"none",
+                border: "none",
               },
             }}
           >
-            <Forgetpassword className="modal-FP"/>
+            <Forgetpassword className="modal-FP" />
           </Modal>
 
           <p className="error">{p}</p>
@@ -183,7 +185,7 @@ const Login = ({ name }) => {
             </p>
           ) : (
             ""
-            )}
+          )}
         </form>
       </div>
     </>

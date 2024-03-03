@@ -1,8 +1,8 @@
 body {
   margin: 0;
   background-color: rgb(243, 247, 251);
-  font-family: "Pacifico", cursive;
-  /* font-family: "Ubuntu", sans-serif; */
+  /* font-family: "Pacifico", cursive; */
+  font-family: "Ubuntu", sans-serif;
   /* font-family: 'Ubuntu', sans-serif; */
 }
 a {
@@ -71,12 +71,16 @@ a {
 
 .manas {
   font-family: "Pacifico", cursive;
-  font-size: 30px;
-  margin: 15px 20px;
+  font-size: 35px;
+  margin: 5px 20px;
   /* margin: auto 20px; */
   cursor: pointer;
+  display: flex;
 }
-
+.manas a {
+  align-self: center;
+  height: fit-content;
+}
 .nav-item {
   display: flex;
   list-style: none;
@@ -85,10 +89,11 @@ a {
 }
 
 .nav-item a li {
-  padding: 8px 25px;
+  padding: 10px 25px;
   margin: auto 5px;
   cursor: pointer;
   border-radius: 20px;
+  align-self: center;
 }
 
 .nav-item a li:hover,
@@ -131,7 +136,7 @@ a {
 
 .body-top {
   display: flex;
-  margin-top: 70px;
+  margin-top: 95px;
   flex-wrap: wrap;
   flex-direction: row;
   grid-column-start: 1;
@@ -149,7 +154,7 @@ a {
   justify-content: center;
   align-items: center;
   width: 60%;
-  height: 668px;
+  height: 750px;
   /* transform: translateX(-100%);
   transition: all 0.5s ease; */
 }
@@ -173,7 +178,7 @@ a {
 
 .bodyright {
   background-color: rgb(233 227 216);
-  height: 668px;
+  height: 750px;
   width: 40%;
   margin: auto;
   display: flex;
@@ -405,7 +410,7 @@ a {
 /*    MEDIA QUERIES    */
 
 /* For smaller screens (phones) */
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 800px) {
   /* Your CSS styles here */
   .manas {
     font-size: 25px;
@@ -427,10 +432,11 @@ a {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 668px;
+    height: 750px;
+    margin-top: -20px;
   }
   .bodyright p {
-    margin: 0px 100px;
+    margin: 10px 100px;
   }
   .bodyright h1 {
     display: flex;
@@ -480,11 +486,17 @@ a {
 }
 
 /* For tablets */
-@media only screen and (min-width: 750px) and (max-width: 1024px) {
+@media only screen and (min-width: 800px) and (max-width: 1080px) {
   /* Your CSS styles here */
+  .bodyright{
+    margin-top: -20px;
+  }
+  .bodyleft{
+    margin-top: -20px;
+  }
 }
 
 /* For larger screens (desktops) */
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 1081px) {
   /* Your CSS styles here */
 }

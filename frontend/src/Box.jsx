@@ -171,7 +171,7 @@ const Box = () => {
             <div>
               <Speedometer prompt={overall} />
             </div>
-            <div className="type-name">Overall</div>
+            <div className="type-name">Average</div>
           </div>
         </div>
       </div>

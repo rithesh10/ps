@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 
@@ -8,56 +8,84 @@ import { IoMdHome } from "react-icons/io";
 import { IoIosContact } from "react-icons/io";
 import { CiCircleMore } from "react-icons/ci";
 
-
-
-
 const Nav = () => {
-
-  
   const [visible, setVisible] = useState(false);
   return (
     <nav className="lgn-nav">
       <h1 className="manas">
+        <div className="logo"></div>
         <Link to="/">Manas health</Link>
       </h1>
       <div className="right-nav">
         <ul className="nav-item">
           <Link to="/">
-            <li><IoMdHome style={{fontSize:"25px",margin:"0px 3px -5px 0px" }}/>Home</li>
+            <li>
+              <IoMdHome
+                style={{ fontSize: "25px", margin: "0px 3px -5px 0px" }}
+              />
+              Home
+            </li>
           </Link>
           <Link to="./aboutus">
-            <li><CiCircleMore style={{fontSize:"25px",margin:"0px 3px -5px 0px" }}/>About us</li>
+            <li>
+              <CiCircleMore
+                style={{ fontSize: "25px", margin: "0px 3px -5px 0px" }}
+              />
+              About us
+            </li>
           </Link>
           <a href="mailto:22bd1a0565@gmail.com?subject=MANAS HEALTH &body=">
-            <li><IoIosContact style={{fontSize:"25px",margin:"0px 3px -5px 0px" }}/>Contact us</li>
+            <li>
+              <IoIosContact
+                style={{ fontSize: "25px", margin: "0px 3px -5px 0px" }}
+              />
+              Contact us
+            </li>
           </a>
         </ul>
         <ul className=" menu" onClick={() => setVisible(true)}>
-        <GiHamburgerMenu style={{fontSize:"40px",color:"white"}}/>
+          <GiHamburgerMenu style={{ fontSize: "40px", color: "white" }} />
         </ul>
-        <Modal isOpen={visible}
-        onRequestClose={() => setVisible(false)}
-        style={{
-          content: {
-            width: "127px",
-            height: "fit-content",
-            overflow: "hidden",
-            top: "7%",
-            left:"",
-            borderRadius: "20px",
-            border: "2px solid black",
-            padding:"0px",
-          },
-        }}>
+        <Modal
+          isOpen={visible}
+          onRequestClose={() => setVisible(false)}
+          style={{
+            content: {
+              width: "127px",
+              height: "fit-content",
+              overflow: "hidden",
+              top: "7%",
+              left: "",
+              borderRadius: "20px",
+              border: "2px solid black",
+              padding: "0px",
+            },
+          }}
+        >
           <ul className="menu-item" onClick={() => setVisible(false)}>
             <Link to="/">
-              <li><IoMdHome style={{fontSize:"25px",margin:"0px 3px -5px 0px" }}/>Home</li>
+              <li>
+                <IoMdHome
+                  style={{ fontSize: "25px", margin: "0px 3px -5px 0px" }}
+                />
+                Home
+              </li>
             </Link>
             <Link to="./aboutus">
-              <li><CiCircleMore style={{fontSize:"23px",margin:"0px 3px -5px 0px" }}/>About us</li>
+              <li>
+                <CiCircleMore
+                  style={{ fontSize: "23px", margin: "0px 3px -5px 0px" }}
+                />
+                About us
+              </li>
             </Link>
             <a href="mailto:22bd1a0565@gmail.com?subject=MANAS HEALTH &body=">
-              <li><IoIosContact style={{fontSize:"25px",margin:"0px 3px -5px 0px" }}/>Contact us</li>
+              <li>
+                <IoIosContact
+                  style={{ fontSize: "25px", margin: "0px 3px -5px 0px" }}
+                />
+                Contact us
+              </li>
             </a>
           </ul>
         </Modal>

@@ -97,8 +97,10 @@ const Navbar = () => {
     <nav className="Navbar">
       <div className="left-menu">
         <li onClick={openmenu}>
-          <GiHamburgerMenu style={{ fontSize: "30px" }} />
+          <div className="logo"></div>
+          {/* <GiHamburgerMenu style={{ fontSize: "30px" }} /> */}
         </li>
+        <div className="logo"></div>
         <div className="Nav-left">
           <h1>
             <Link to="/dashboard">Dashboard</Link>
@@ -106,27 +108,7 @@ const Navbar = () => {
           <p>Here's the information about your activity and mental condition</p>
         </div>
       </div>
-
-
-      {/* Menu Modal */}
-
-      {/* <Modal //// MENU ////
-        isOpen={menu_visible}
-        onRequestClose={() => setmenu_Visible(false)}
-        style={{
-          content: {
-            width: "fit-content",
-            height: "fit-content",
-            overflow: "hidden",
-            top: "0%",
-            left: "0%",
-            padding: "0px",
-          },
-        }}
-      >
-    </Modal> */}
-    <Sidebar visible={menu_visible} onRequestClose={openmenu}/>
-
+      <Sidebar visible={menu_visible} onRequestClose={openmenu} />
 
       {/* Student Details */}
 
@@ -141,7 +123,6 @@ const Navbar = () => {
         onRequestClose={() => setdet_Visible(false)}
         style={{
           content: {
-
             width: "0",
             height: "0",
 
@@ -164,14 +145,14 @@ const Navbar = () => {
             </button>
             <button className="change-password" onClick={openChangePassword}>
               change password
-              <IoIosArrowForward className="arrow"
+              <IoIosArrowForward
+                className="arrow"
                 style={{ fontSize: "17px", margin: "0px -7px -4px 10px" }}
               />
             </button>
           </div>
         }
       </Modal>
-
 
       {/* Change Password */}
 
@@ -200,7 +181,6 @@ const Navbar = () => {
           />
         </div>
       </Modal>
-
 
       {/* Edit_profile */}
 
