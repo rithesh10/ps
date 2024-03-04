@@ -53,18 +53,18 @@ const Asnmt_page = () => {
           console.log("p==", p.name);
         }
 
-        const lastExamDate = localStorage.getItem("lastExamDate");
-        if (lastExamDate) {
-          const today = new Date().toLocaleDateString();
-          if (lastExamDate === today) {
-            // User has already taken the exam today, handle accordingly
-            console.log("User has already taken the exam today.");
-            // alert("Exam is already taken");
-            setExam_over(true);
-            // navigate("./dashboard")
-            return;
-          }
-        }
+        // const lastExamDate = localStorage.getItem("lastExamDate");
+        // if (lastExamDate) {
+        //   const today = new Date().toLocaleDateString();
+        //   if (lastExamDate === today) {
+        //     // User has already taken the exam today, handle accordingly
+        //     console.log("User has already taken the exam today.");
+        //     // alert("Exam is already taken");
+        //     setExam_over(true);
+        //     // navigate("./dashboard")
+        //     return;
+        //   }
+        // }
       } catch (error) {
         console.log(error);
         setError(

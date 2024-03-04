@@ -3,8 +3,10 @@ import React from "react";
 const Aboutus = () => {
   return (
     <div className="about-us">
-      <h1>Cultivating Mental Health and Flourishing Well-being
+      <h1 style={{ fontSize: "50px", textDecoration: "underline" }}>
+        About Manas Health
       </h1>
+      <h1>Cultivating Mental Health and Flourishing Well-being</h1>
       <div className="about-img">
         {/* <img
           src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/eaboutus1.svg"
