@@ -403,6 +403,10 @@ const verifyToken = (token, id) => {
   }
 };
 
+const logout = asyncHandler(async(req,res)=>{
+    
+})
+
 
 
 module.exports = {
@@ -414,4 +418,5 @@ module.exports = {
   edit_profile,
   forgotpassword,
   resetpassword,
+  logout,
 };
