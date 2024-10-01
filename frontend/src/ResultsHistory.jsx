@@ -56,9 +56,9 @@ const ResultsHistory = () => {
           console.log("Anxiety :", anxiety);
           console.log("Stress :", stress);
           console.log("dates : ", dates);
-          console.log("d-value",depressionValue)
-          console.log("a-value",anxietyValue)
-          console.log("s-value",stressValue)
+          console.log("d-value", depressionValue);
+          console.log("a-value", anxietyValue);
+          console.log("s-value", stressValue);
         }
       } catch (error) {
         console.log("Error in useEffect:", error);
@@ -118,7 +118,7 @@ const ResultsHistory = () => {
   };
 
   const totalWeeks = depression.length;
-  
+
   const [dep, setdep] = useState(0);
   const [str, setstr] = useState(0);
   const [anx, setanx] = useState(0);
@@ -128,10 +128,13 @@ const ResultsHistory = () => {
     latest(totalWeeks);
   }, []);
 
+  const [resultvisible, setresultvisible] = useState(false);
+
   const handleWeekChange = (selectedWeek) => {
     console.log("total:", totalWeeks);
     console.log("week:", selectedWeek);
     latest(selectedWeek);
+    setresultvisible(true);
   };
 
   const latest = (selectedWeek) => {
@@ -148,12 +151,20 @@ const ResultsHistory = () => {
     for (let week = 1; week <= totalWeeks; week++) {
       r.push(
         <option key={week} value={week}>
-          Attempt {week}
+          Attempt {week} [ {dates[week - 1]} ]
         </option>
       );
     }
     return r;
   };
+
+  const condition = [
+    "normal",
+    "mild",
+    "moderate",
+    "severe",
+    "Extremely severe",
+  ];
 
   return (
     <>
@@ -161,14 +172,17 @@ const ResultsHistory = () => {
       <Navbar />
       <div className="BodyBox">
         <div className="mainBox">
-          <div className="Depression">
-            Depression is recorded as {dep} on {date}
+          <div className={`${resultvisible ? "none" : "Depression"}`}>
+            Please select the Attempt for result.......
           </div>
-          <div className="Stress">
-            Stress is recorded as {str} on {date}
+          <div className={`${resultvisible ? "Depression" : "none"}`}>
+            Depression is recorded as {condition[dep]} on {date}
           </div>
-          <div className="Anxiety">
-            Anxiety is recorded as {anx} on {date}
+          <div className={`${resultvisible ? "Stress" : "none"}`}>
+            Stress is recorded as {condition[str]} on {date}
+          </div>
+          <div className={`${resultvisible ? "Anxiety" : "none"}`}>
+            Anxiety is recorded as {condition[anx]} on {date}
           </div>
           <select
             name="weekSelector"

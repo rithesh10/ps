@@ -31,7 +31,7 @@ const resultData = asyncHandler(async (req,res)=>{
     else{
       // const create = await Result.create({ one, two, three, name, rollno,user});
       const create = await Result.create({
-        options: [{ Depression, Anxiety, Stress, }],
+        options: [{ Stress, Anxiety, Depression, }],
         user,
         name,
         rollno

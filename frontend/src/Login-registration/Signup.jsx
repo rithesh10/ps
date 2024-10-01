@@ -69,7 +69,7 @@ const Signup = () => {
         rollno: "",
         password: "",
       });
-      
+
       console.log(response.data);
     } catch (error) {
       if (error.response && error.response.status === 400) {
@@ -211,6 +211,10 @@ const Signup = () => {
               }
               required
             />
+            <h6 className="pass-cond">
+              (password should contain atleast one uppercase, lowercase ,symbol,
+              number and min of 8 characters!)
+            </h6>
             {!passwordValid && <b className="error">*Pick a strong password</b>}
           </div>
 

@@ -98,17 +98,17 @@ const Results = () => {
     userresult();
   }, []);
 
-  const condition = ["normal", "mild", "severe", "Extremely severe"];
+  const condition = ["normal", "mild", "moderate", "severe", "Extremely severe"];
 
   const goto_dash = () => {
     navigate("/dashboard");
   };
   return (
     <div className="result-img">
-      <div className="result">
-        <h3>You have {condition[depressionValue - 1]} Depression</h3>
-        <h3>You have {condition[anxietyValue - 1]} Anxiety</h3>
-        <h3>You have {condition[stressValue - 1]} Stress</h3>
+      <div className="result final">
+        <h3>You have {condition[depressionValue]} Depression</h3>
+        <h3>You have {condition[anxietyValue]} Anxiety</h3>
+        <h3>You have {condition[stressValue]} Stress</h3>
         <button onClick={goto_dash}> Go to Dashboard{`  ~>`}</button>
       </div>
     </div>

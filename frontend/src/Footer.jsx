@@ -20,7 +20,7 @@ const Footer = () => {
           </a>
         </div>
 
-        <div className="copyright">
+        <div className="copy-right">
           &copy; 2024 Manas Health. All rights reserved.
         </div>
 
@@ -29,7 +29,7 @@ const Footer = () => {
         </div>
 
         <div className="contact">
-          Contact  :  manas@gmail.com
+          Contact  :  manashealth@gmail.com
         </div>
       </div>
     </footer>

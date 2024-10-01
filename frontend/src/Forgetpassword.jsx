@@ -4,44 +4,40 @@ import { useNavigate } from "react-router-dom";
 
 import { IoClose } from "react-icons/io5";
 
-const Forgetpassword = ({visible}) => {
+const Forgetpassword = ({ visible }) => {
+  const [email, setemail] = useState("");
+  const navigate = useNavigate();
+  const [invalid, setinvalid] = useState("");
 
-  const [email,setemail]=useState("")
-  const navigate=useNavigate()
-  
-  const Change_pass=async (e)=>{
-    console.log(email)
+  const Change_pass = async (e) => {
+    console.log(email);
     e.preventDefault();
-    try{
-
+    try {
       const response = await axios.post(
         "http://localhost:2000/api/users/forgot-password",
-        {email},
+        { email },
         {
           headers: {
             "Content-Type": "application/json",
           },
         }
-        );
-        // console.log(response)
-      if(response.status==200)
-      {
-        console.log("super")
-        navigate("/")
-        alert("password reset link sent to your email")
+      );
+      // console.log(response)
+      if (response.status == 200) {
+        console.log("super");
+        navigate("/");
+        alert("password reset link sent to your email");
       }
-      }
-    catch(error)
-    {
+    } catch (error) {
       console.log(error.response);
-      alert("catch block executed")
+      setinvalid("Invalid email");
     }
-  }
+  };
 
   return (
     <>
       <form className="Forget-password" onSubmit={Change_pass}>
-      {/* <IoClose className="close-CP" onClick={closemodal} /> */}
+        {/* <IoClose className="close-CP" onClick={closemodal} /> */}
         <h2>Forget password</h2>
         <label className="details" htmlFor="S-Username">
           Email
@@ -52,10 +48,13 @@ const Forgetpassword = ({visible}) => {
           name="email"
           id="S-Username"
           value={email}
-          onChange={(e)=>{setemail(e.target.value)}}
+          onChange={(e) => {
+            setemail(e.target.value);
+          }}
           placeholder="Enter your email"
           required
         />
+        <h3 className="error">{invalid}</h3>
         <button className="FP">Next</button>
       </form>
     </>
