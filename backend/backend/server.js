@@ -23,10 +23,7 @@ const allowedOrigins = (
 
 connectDB()
 const app = express()
-app.use(express.json())
-app.use(bodyParser.json());
-app.use(express.urlencoded({extended:false}))
-app.use(cors({
+const corsOptions = {
   origin(origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
       return callback(null, true);
@@ -35,7 +32,16 @@ app.use(cors({
     return callback(new Error('Not allowed by CORS'));
   },
   credentials: true,
-}))
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  optionsSuccessStatus: 204,
+}
+
+app.use(express.json())
+app.use(bodyParser.json());
+app.use(express.urlencoded({extended:false}))
+app.use(cors(corsOptions))
+app.options('*', cors(corsOptions))
 app.use(cookieParser())
 app.use('/api/goals',require('./routes/index')) //
 app.use('/api/users',require('./routes/userRoutes'))
