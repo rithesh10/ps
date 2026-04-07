@@ -5,10 +5,17 @@ from flask import jsonify
 import os
 
 app = Flask(__name__)
-CORS(app, resources={r"/result": {"origins": "http://localhost:5173"}})
-CORS(app, resources={r"/result": {"origins": "*"}})
+allowed_origins = [
+    origin.strip()
+    for origin in (
+        os.environ.get("CORS_ORIGINS")
+        or os.environ.get("FRONTEND_URL")
+        or "http://localhost:5173"
+    ).split(",")
+    if origin.strip()
+]
 
-CORS(app) 
+CORS(app, resources={r"/result": {"origins": allowed_origins}}, supports_credentials=True)
 app.secret_key = 'your_secret_key'
 
 options = {"q1": None, "q2": None, "q3": None,"q4": None,"q5": None,"q6": None,"q7": None,"q8": None,"q9": None,"q10": None,"q11": None,"q12": None,"q13": None,"q14": None,"q15": None,"q16": None,"q17": None,"q18": None,"q19": None,"q20": None,"q21": None}
@@ -27,9 +34,12 @@ def questions():
     if request.method == "OPTIONS":
         # Respond to the preflight request
         response = make_response()
-        response.headers["Access-Control-Allow-Origin"] = "http://localhost:5173"
+        origin = request.headers.get("Origin")
+        if origin in allowed_origins:
+            response.headers["Access-Control-Allow-Origin"] = origin
         response.headers["Access-Control-Allow-Headers"] = "Content-Type"
-        response.headers["Access-Control-Allow-Methods"] = "POST"
+        response.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
+        response.headers["Access-Control-Allow-Credentials"] = "true"
         return response
 
     elif request.method == "POST":
