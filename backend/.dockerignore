@@ -1,4 +1,9 @@
 node_modules
 npm-debug.log
 .env
+.env.*
 flask
+backend/.env
+backend/.env.*
+yarn-debug.log*
+yarn-error.log*
