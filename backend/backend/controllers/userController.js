@@ -328,7 +328,7 @@ const forgotpassword = async (req, res) => {
           from: 'saimadhav9235@gmail.com',
           to: user.email,
           subject: 'Reset your password',
-          text: `http://localhost:5173/reset-password/${user._id}/${token}`
+          text: `${process.env.FRONTEND_URL || 'http://localhost:80'}/reset-password/${user._id}/${token}`
         };
         res.status(200).json(mailOptions);
         

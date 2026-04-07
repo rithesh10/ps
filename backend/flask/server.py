@@ -2,6 +2,7 @@ from flask import Flask, render_template, request,redirect,session,jsonify,make_
 import requests
 from flask_cors import CORS
 from flask import jsonify
+import os
 
 app = Flask(__name__)
 CORS(app, resources={r"/result": {"origins": "http://localhost:5173"}})
@@ -134,7 +135,7 @@ def questions():
         # return jsonify({'final_predict': final_predict_list})
 
         # return jsonify({'message': 'GET request sent successfully from Flask to Node.js'})
-        url="http://localhost:2000/api/result/student-result"
+        url = os.environ.get("NODE_BACKEND_URL", "http://localhost:2000") + "/api/result/student-result"
         data = {'final_predict_list': final_predict_list,
                 'userdata':userdetails}
 
@@ -166,4 +167,4 @@ def questions():
     # return render_template("index.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)

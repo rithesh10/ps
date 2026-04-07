@@ -1,0 +1,14 @@
+/* ========================================
+   LOGIN / REGISTRATION PAGES
+   All styling via Tailwind in JSX.
+   This file only contains minimal resets.
+   ======================================== */
+
+.error {
+  display: block;
+  padding: 0;
+  color: #e11d48;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-top: 2px;
+}

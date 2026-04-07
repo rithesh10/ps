@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: manas-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    restart: always
+
+  backend:
+    build:
+      context: ./backend
+    container_name: manas-backend
+    ports:
+      - "2000:2000"
+    environment:
+      - NODE_ENV=production
+      - PORT=2000
+      - MONGO_URI=mongodb://mongodb:27017/ManasHealth
+      - JWT_SECRET=${JWT_SECRET:-abc123}
+    depends_on:
+      - mongodb
+    restart: always
+
+  flask-api:
+    build:
+      context: ./backend/flask
+    container_name: manas-flask
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_BACKEND_URL=http://backend:2000
+    depends_on:
+      - backend
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        # Default API URLs for localhost deployment (change this if deploying to a remote domain)
+        - VITE_BACKEND_URL=${VITE_BACKEND_URL:-http://localhost:2000}
+        - VITE_FLASK_URL=${VITE_FLASK_URL:-http://localhost:5000}
+    container_name: manas-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+      - flask-api
+    restart: always
+
+volumes:
+  mongodb_data:
